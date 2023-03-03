@@ -8,6 +8,12 @@ body {
   background-color: whitesmoke;
 }
 
+.tooltip{
+  text-transform: lowercase;
+  background-color: white!important;
+  color: black!important;
+}
+
 .mat-mdc-snack-bar-container {
   --mat-mdc-snack-bar-button-color: var(--verde);
   --mdc-snackbar-container-color: whiteSmoke;

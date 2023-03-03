@@ -56,7 +56,7 @@ export class TarefasService {
     return this.httpClient.put<Tarefa>(`${this.API}/${tarefa._id}`, tarefa).pipe(
       catchError(error => {
         console.error(error)
-        this.notificationService.mostrarMensagem("Erro ao editar  tarefa")
+        this.notificationService.mostrarMensagem("Erro ao editar tarefa")
         return EMPTY
       })
     )

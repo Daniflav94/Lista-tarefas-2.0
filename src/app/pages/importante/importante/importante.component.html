@@ -30,7 +30,7 @@
                       [ngClass]="[tarefa.meuDia || tarefa.amanha? 'azul' : 'cinza', tarefa.ontem? 'vermelho' : '']">{{tarefa.data
                       | datas}}</span>
                   </div>
-                  <img *ngIf="tarefa.repeticao" src="/assets/icons/botao-de-repeticao.png" width="12px">
+                  <img *ngIf="tarefa.repeticao" matTooltip="{{tarefa.repeticao}}" matTooltipPosition="right" matTooltipClass="tooltip" src="/assets/icons/botao-de-repeticao.png" width="12px">
                   <img *ngIf="tarefa.anotacao" class="nota" src="/assets/icons/notas-adesivas (3).png" width="15px">
                 </span>
               </div>
@@ -47,7 +47,7 @@
       <button class="btn-concluidas" (click)="mostrarConcluidas()" *ngIf="tarefasConcluidas.length > 0">
         <mat-icon *ngIf="!expandir">chevron_right</mat-icon>
         <mat-icon *ngIf="expandir">expand_more</mat-icon>
-        Concluída
+        Concluída ({{tarefasConcluidas.length}})
       </button>
       <section class="tarefas-concluidas" *ngIf="expandir">
         <div *ngFor="let tarefa of tarefasConcluidas">
@@ -80,6 +80,61 @@
             </div>
           </div>
         </div>
+      </section>
+      <section>
+        <form class="nova-tarefa">
+          <button type="submit" (click)="criarTarefa()" class="icone-adicionar"><img src="/assets/icons/mais.png"
+              width="25px"></button>
+          <input class="tarefa" placeholder="Adicionar uma tarefa" name="nome" [(ngModel)]="tarefa.nome" required>
+          <div class="botoes">
+            <button class="icone" [matMenuTriggerFor]="data">
+              <svg xmlns="http://www.w3.org/2000/svg" height="23" viewBox="0 96 960 960" width="23">
+                <path
+                  d="M700 976V856H580v-60h120V676h60v120h120v60H760v120h-60Zm-520-80q-24 0-42-18t-18-42V296q0-24 18-42t42-18h65v-60h65v60h260v-60h65v60h65q24 0 42 18t18 42v302q-15-2-30-2t-30 2V486H180v350h320q0 15 3 30t8 30H180Zm0-470h520V296H180v130Zm0 0V296v130Z" />
+              </svg>
+              <span *ngIf="tarefa.data">{{tarefa.data | datas}}</span>
+              <input [matDatepicker]="picker" name="data" [(ngModel)]="tarefa.data">
+
+            </button>
+            <mat-menu #data="matMenu">
+              <button mat-menu-item (click)="escolherData('hoje')">
+                <img src="/assets/icons/encontro.png" width="16px">
+                <span>Hoje</span>
+              </button>
+              <button mat-menu-item (click)="escolherData('amanha')">
+                <img src="/assets/icons/amanha.png" width="16px">
+                <span>Amanhã</span>
+              </button>
+              <button mat-menu-item (click)="picker.open()">
+                <img src="/assets/icons/calendario (2).png" width="16px">
+                <span>Escolher uma data</span>
+                <mat-datepicker #picker></mat-datepicker>
+              </button>
+            </mat-menu>
+            <button class="icone" [matMenuTriggerFor]="repeticao">
+              <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 96 960 960" width="20">
+                <path
+                  d="M180 976q-24 0-42-18t-18-42V296q0-24 18-42t42-18h65v-60h65v60h340v-60h65v60h65q24 0 42 18t18 42v300h-60V486H180v430h324v60H180Zm580 80q-73 0-127.5-45.5T564 896h62q13 44 49.5 72t84.5 28q58 0 99-41t41-99q0-58-41-99t-99-41q-29 0-54 10.5T662 756h58v60H560V656h60v57q27-26 63-41.5t77-15.5q83 0 141.5 58.5T960 856q0 83-58.5 141.5T760 1056ZM180 426h600V296H180v130Zm0 0V296v130Z" />
+              </svg>
+              <span *ngIf="tarefa.repeticao" >{{tarefa.repeticao}}</span>
+            </button>
+            <mat-menu #repeticao="matMenu">
+              <button mat-menu-item (click)="escolherRepeticao('diariamente')">
+                <img src="/assets/icons/calendario-mensal.png" width="16px" class="opacidade">
+                <span>Diariamente</span>
+              </button>
+              <button mat-menu-item (click)="escolherRepeticao('semanalmente')">
+                <img src="/assets/icons/calendario-mensal2.png" width="16px" class="opacidade">
+                <span>Semanalmente</span>
+              </button>
+              <button mat-menu-item (click)="escolherRepeticao('mensalmente')">
+                <img src="/assets/icons/calendario-mensal3.png" width="16px" class="opacidade">
+                <span>Mensalmente</span>
+              </button>
+            </mat-menu>
+          </div>
+
+        </form>
       </section>
     </div>
   </ng-container>

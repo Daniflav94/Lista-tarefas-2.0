@@ -34,7 +34,7 @@
                       [ngClass]="[tarefa.meuDia || tarefa.amanha? 'azul' : 'cinza', tarefa.ontem? 'vermelho' : '']">{{tarefa.data
                       | datas}}</span>
                   </div>
-                  <img *ngIf="tarefa.repeticao" src="/assets/icons/botao-de-repeticao.png" width="12px">
+                  <img *ngIf="tarefa.repeticao"matTooltip="{{tarefa.repeticao}}" matTooltipPosition="right" matTooltipClass="tooltip" src="/assets/icons/botao-de-repeticao.png" width="12px">
                   <img *ngIf="tarefa.anotacao" class="nota" src="/assets/icons/notas-adesivas (3).png" width="15px">
                 </span>
               </div>
@@ -52,7 +52,7 @@
       <button class="btn-concluidas" (click)="mostrarConcluidas()" *ngIf="tarefasConcluidas.length > 0">
         <mat-icon *ngIf="!expandir">chevron_right</mat-icon>
         <mat-icon *ngIf="expandir">expand_more</mat-icon>
-        Concluída
+        Concluída ({{tarefasConcluidas.length}})
       </button>
       <section class="tarefas-concluidas" *ngIf="expandir">
         <div *ngFor="let tarefa of tarefasConcluidas">

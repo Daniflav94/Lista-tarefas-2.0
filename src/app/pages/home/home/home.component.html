@@ -48,7 +48,7 @@
       <button class="btn-concluidas" (click)="mostrarConcluidas()" *ngIf="tarefasConcluidas.length > 0">
         <mat-icon *ngIf="!expandir">chevron_right</mat-icon>
         <mat-icon *ngIf="expandir">expand_more</mat-icon>
-        Concluída
+        Concluída ({{tarefasConcluidas.length}})
       </button>
       <section class="tarefas-concluidas" *ngIf="expandir">
         <div *ngFor="let tarefa of tarefasConcluidas">

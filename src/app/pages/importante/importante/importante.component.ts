@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogTarefaComponent } from 'src/app/components/dialog-tarefa/dialog-tarefa.component';
 import { Tarefa } from 'src/app/models/tarefa';
+import { NotificationService } from 'src/app/services/notification.service';
 import { TarefasService } from 'src/app/services/tarefas.service';
 
 @Component({
@@ -14,7 +15,7 @@ export class ImportanteComponent {
   constructor(
     private tarefasService: TarefasService,
     public dialog: MatDialog,
-
+    private notificacao: NotificationService
   ) {
   }
 
@@ -76,6 +77,49 @@ export class ImportanteComponent {
         }
       })
     });
+  }
+
+  escolherData(data: string) {
+    const hoje = new Date();
+    const amanha = new Date(hoje.getTime());
+    amanha.setDate(hoje.getDate() + 1);
+
+    if (data == 'hoje') {
+      this.tarefa.data = hoje;
+    } else if (data == 'amanha') {
+      this.tarefa.data = amanha;
+    }
+  }
+
+  escolherRepeticao(repeticao: string) {
+    if (repeticao == 'diariamente') {
+      this.tarefa.repeticao = 'DIARIAMENTE';
+    } else if (repeticao == 'semanalmente') {
+      this.tarefa.repeticao = 'SEMANALMENTE';
+    } else if (repeticao == 'mensalmente') {
+      this.tarefa.repeticao = 'MENSALMENTE';
+    }
+  }
+
+  criarTarefa() {
+    if (this.tarefa.nome != '') {
+      this.tarefa.favorito = true
+      this.tarefasService.salvarTarefa(this.tarefa).subscribe((resposta) => {
+        this.listarTarefas();
+        this.tarefa = {
+          _id: 0,
+          nome: '',
+          favorito: false,
+          concluida: false,
+          dataConclusao: undefined,
+          criadaEm: new Date(),
+          repeticao: undefined,
+          data: undefined,
+        };
+      });
+    } else {
+      this.notificacao.mostrarMensagem('Preencha o campo do nome da tarefa!');
+    }
   }
 
   desfavoritar(tarefa: Tarefa){
