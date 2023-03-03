@@ -1,0 +1,110 @@
+.container{
+  display: flex;
+}
+
+nav{
+  display: flex;
+  justify-content: center;
+  background-color: var(--sidenav);
+  height: 100vh;
+  width: 300px;
+  box-sizing: border-box;
+  position: fixed;
+  padding: 10px;
+
+  ul{
+    width: 100%;
+    padding: 0;
+
+    .header-nav{
+      height: 60%;
+    }
+
+    li{
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 5px;
+      font-size: 15px;
+      box-sizing: border-box;
+
+      div{
+        display: flex;
+        align-items: center;
+      }
+
+      img{
+        margin-right: 15px;
+        opacity: 0.8;
+      }
+
+      a{
+        text-decoration: none;
+        color: var(--preto);
+      }
+
+    }
+
+    li:hover{
+      background-color: var(--cinza);
+      border-radius: 5px;
+    }
+
+    mat-divider{
+      margin-bottom: 15px;
+      width: 100%;
+    }
+
+    .qntd-tarefas{
+      background-color: #d5d5d5;
+      border: 1px solid rgb(222, 222, 222);
+      border-radius: 100%;
+      width: 23px;
+      height: 20px;
+      text-align: center;
+      padding-top: 3px;
+      font-size: 11px;
+      margin: 0;
+    }
+
+    .listas-usuario{
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 40%;
+
+      li{
+        display: flex;
+        justify-content: flex-start;
+      }
+    }
+
+    .nova-lista{
+      vertical-align: bottom;
+      width: 100%;
+      padding: 10px;
+      margin: 0;
+    }
+
+    .nova-lista button{
+      background-color: transparent;
+      border: none;
+      color: var(--preto);
+      font-size: 15px;
+      display: flex;
+      align-items: center;
+    }
+    .active{
+      font-weight: 500;
+      background-color: var(--cinza);
+      border-radius: 5px;
+    }
+  }
+
+
+
+}
+

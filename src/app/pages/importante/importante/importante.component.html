@@ -1,0 +1,88 @@
+<app-sidenav>
+  <ng-container>
+    <div class="container">
+      <img src="/assets/img/alice-donovan-rouse-pZ61ZA8QgcY-unsplash.jpg" class="background" />
+      <section class="header">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" height="30" viewBox="0 96 960 960" width="30"><path d="m323 851 157-94 157 95-42-178 138-120-182-16-71-168-71 167-182 16 138 120-42 178Zm-90 125 65-281L80 506l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Zm247-355Z"/></svg>
+          <h1>Importante</h1>
+        </div>
+        <img src="/assets/icons/pontos.png" class="pontos">
+      </section>
+      <section class="tarefas" >
+        <div *ngFor="let tarefa of tarefasImportantes, index as i">
+          <div class="tarefa" *ngIf="!tarefa.concluida">
+            <div>
+              <div class="bolinha" (click)="marcarComoConcluida(tarefa)">
+                <img src="/assets/icons/circulo.png" class="icone" />
+                <img src="/assets/icons/feito.png" class="seta">
+              </div>
+              <div class="nome-data">
+                <span class="nome-tarefa">{{tarefa.nome}}</span>
+                <span class="data">
+                  <div *ngIf="tarefa.data">
+                    <svg [ngClass]="[tarefa.meuDia || tarefa.amanha? 'azul' : 'cinza', tarefa.ontem? 'vermelho' : '']"
+                      xmlns="http://www.w3.org/2000/svg" viewBox="0 96 960 960">
+                      <path
+                        d="M180 976q-24 0-42-18t-18-42V296q0-24 18-42t42-18h65v-60h65v60h340v-60h65v60h65q24 0 42 18t18 42v620q0 24-18 42t-42 18H180Zm0-60h600V486H180v430Zm0-490h600V296H180v130Zm0 0V296v130Zm300 230q-17 0-28.5-11.5T440 616q0-17 11.5-28.5T480 576q17 0 28.5 11.5T520 616q0 17-11.5 28.5T480 656Zm-160 0q-17 0-28.5-11.5T280 616q0-17 11.5-28.5T320 576q17 0 28.5 11.5T360 616q0 17-11.5 28.5T320 656Zm320 0q-17 0-28.5-11.5T600 616q0-17 11.5-28.5T640 576q17 0 28.5 11.5T680 616q0 17-11.5 28.5T640 656ZM480 816q-17 0-28.5-11.5T440 776q0-17 11.5-28.5T480 736q17 0 28.5 11.5T520 776q0 17-11.5 28.5T480 816Zm-160 0q-17 0-28.5-11.5T280 776q0-17 11.5-28.5T320 736q17 0 28.5 11.5T360 776q0 17-11.5 28.5T320 816Zm320 0q-17 0-28.5-11.5T600 776q0-17 11.5-28.5T640 736q17 0 28.5 11.5T680 776q0 17-11.5 28.5T640 816Z" />
+                    </svg>
+                    <span
+                      [ngClass]="[tarefa.meuDia || tarefa.amanha? 'azul' : 'cinza', tarefa.ontem? 'vermelho' : '']">{{tarefa.data
+                      | datas}}</span>
+                  </div>
+                  <img *ngIf="tarefa.repeticao" src="/assets/icons/botao-de-repeticao.png" width="12px">
+                  <img *ngIf="tarefa.anotacao" class="nota" src="/assets/icons/notas-adesivas (3).png" width="15px">
+                </span>
+              </div>
+            </div>
+            <div>
+              <img src="/assets/icons/aberto.png" class="icone opacidade" (click)="openDialog(tarefa)"
+                [routerLink]="['tarefa', tarefa._id]">
+              <img *ngIf="!tarefa.favorito" src="/assets/icons/estrela.png" class="icone" />
+              <img *ngIf="tarefa.favorito" (click)="desfavoritar(tarefa)" src="/assets/icons/estrela (1).png" class="icone-estrela" />
+            </div>
+          </div>
+        </div>
+      </section>
+      <button class="btn-concluidas" (click)="mostrarConcluidas()" *ngIf="tarefasConcluidas.length > 0">
+        <mat-icon *ngIf="!expandir">chevron_right</mat-icon>
+        <mat-icon *ngIf="expandir">expand_more</mat-icon>
+        Concluída
+      </button>
+      <section class="tarefas-concluidas" *ngIf="expandir">
+        <div *ngFor="let tarefa of tarefasConcluidas">
+          <div class="tarefa" [ngClass]="{'concluido': tarefa.concluida}" *ngIf="tarefa.concluida">
+            <div>
+              <div class="bolinha" (click)="marcarComoConcluida(tarefa)">
+                <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48"><path d="m421 758 283-283-46-45-237 237-120-120-45 45 165 166Zm59 218q-82 0-155-31.5t-127.5-86Q143 804 111.5 731T80 576q0-83 31.5-156t86-127Q252 239 325 207.5T480 176q83 0 156 31.5T763 293q54 54 85.5 127T880 576q0 82-31.5 155T763 858.5q-54 54.5-127 86T480 976Z"/></svg>
+              </div>
+              <div class="nome-data">
+                <span class="nome-tarefa">{{tarefa.nome}}</span>
+                <span class="data">
+                  <div *ngIf="tarefa.data">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 96 960 960">
+                      <path
+                        d="M180 976q-24 0-42-18t-18-42V296q0-24 18-42t42-18h65v-60h65v60h340v-60h65v60h65q24 0 42 18t18 42v620q0 24-18 42t-42 18H180Zm0-60h600V486H180v430Zm0-490h600V296H180v130Zm0 0V296v130Zm300 230q-17 0-28.5-11.5T440 616q0-17 11.5-28.5T480 576q17 0 28.5 11.5T520 616q0 17-11.5 28.5T480 656Zm-160 0q-17 0-28.5-11.5T280 616q0-17 11.5-28.5T320 576q17 0 28.5 11.5T360 616q0 17-11.5 28.5T320 656Zm320 0q-17 0-28.5-11.5T600 616q0-17 11.5-28.5T640 576q17 0 28.5 11.5T680 616q0 17-11.5 28.5T640 656ZM480 816q-17 0-28.5-11.5T440 776q0-17 11.5-28.5T480 736q17 0 28.5 11.5T520 776q0 17-11.5 28.5T480 816Zm-160 0q-17 0-28.5-11.5T280 776q0-17 11.5-28.5T320 736q17 0 28.5 11.5T360 776q0 17-11.5 28.5T320 816Zm320 0q-17 0-28.5-11.5T600 776q0-17 11.5-28.5T640 736q17 0 28.5 11.5T680 776q0 17-11.5 28.5T640 816Z" />
+                    </svg>
+                    <span>{{tarefa.data | date: "dd/MM/yyyy"}}</span>
+                  </div>
+                  <img *ngIf="tarefa.repeticao" src="/assets/icons/botao-de-repeticao.png" width="12px"
+                    matTooltip="{{tarefa.repeticao}}" matTooltipPosition="right" matTooltipClass="tooltip">
+                  <img *ngIf="tarefa.anotacao" class="nota" src="/assets/icons/notas-adesivas (3).png" width="15px">
+                </span>
+              </div>
+            </div>
+            <div>
+              <img src="/assets/icons/aberto.png" class="icone opacidade" (click)="openDialog(tarefa)"
+                [routerLink]="['tarefa', tarefa._id]">
+              <img *ngIf="tarefa.favorito" (click)="desfavoritar(tarefa)" src="/assets/icons/estrela (1).png"
+                class="icone-estrela" />
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </ng-container>
+</app-sidenav>
+
+

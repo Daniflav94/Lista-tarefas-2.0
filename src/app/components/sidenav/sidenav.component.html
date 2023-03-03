@@ -1,0 +1,59 @@
+<div class="container">
+  <nav>
+    <ul>
+      <div class="header-nav">
+        <li class="usuario">
+          <img src="" alt="" />
+          <div class="dados-usuario">
+            <span class="nome-usuario"></span>
+            <span class="email-usuario"></span>
+          </div>
+        </li>
+        <div class="listas">
+          <li routerLinkActive="active">
+            <div>
+              <a routerLink="/home">
+                <img src="/assets/icons/botao-de-inicio.png" width="18px" class="icone" />
+                Tarefas
+              </a>
+            </div>
+
+          </li>
+          <li routerLinkActive="active">
+            <div>
+              <a routerLink="/meuDia">
+                <img src="/assets/icons/brilho-do-sol.png" width="18px" class="icone" />
+                Meu Dia</a>
+            </div>
+
+          </li>
+          <li routerLinkActive="active">
+            <div>
+              <a routerLink="/importante">
+                <img src="/assets/icons/estrela.png" width="16px" class="icone" />
+                <span>Importante</span>
+              </a>
+            </div>
+
+          </li>
+        </div>
+      </div>
+      <mat-divider></mat-divider>
+      <div class="listas-usuario">
+        <li>
+          <img src="/assets/icons/cardapio.png" width="15px" class="icone" />
+          <span>lista</span>
+        </li>
+        <li class="nova-lista">
+          <button>
+            <img src="/assets/icons/mais.png" width="22px" class="icone" />
+            <span>Nova Lista</span>
+          </button>
+        </li>
+      </div>
+    </ul>
+  </nav>
+  <div class="container">
+    <ng-content></ng-content>
+  </div>
+</div>

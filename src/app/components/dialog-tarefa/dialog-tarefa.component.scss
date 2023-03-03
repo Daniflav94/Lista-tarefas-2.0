@@ -1,0 +1,132 @@
+::ng-deep .mat-mdc-dialog-container .mdc-dialog__surface {
+  background-color: rgba(255, 255, 255, 0.969)!important;
+}
+
+.azul{
+  color: rgb(72, 113, 201);
+  fill: rgb(72, 113, 201);
+}
+
+.cinza{
+  fill: #707070;
+  color: #707070;
+}
+
+.vermelho{
+  fill: rgb(215, 57, 57);
+  color: rgb(215, 57, 57);
+}
+
+.forms{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+  gap: 10px;
+
+  input{
+    height: 45px;
+    width: 100%;
+    border: 1px solid rgb(237, 237, 237);
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--black);
+    text-align: center;
+  }
+
+  input:focus{
+    outline: none;
+  }
+
+  .data{
+    width: 100%;
+    height: 45px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid rgb(237, 237, 237);
+    border-radius: 5px;
+    font-size: 13px;
+    color: #494949;
+    background-color: white;
+    padding: 15px;
+    box-sizing: border-box;
+
+    img, svg{
+      cursor: pointer;
+    }
+
+    div{
+      display: flex;
+      align-items: center;
+      width: 100%;
+
+      img{
+        margin-right: 10px;
+      }
+
+      span{
+        width: 100%;
+        text-transform: lowercase;
+      }
+
+      span::first-letter{
+        text-transform: uppercase;
+      }
+
+      button{
+        border: none;
+        background-color: transparent;
+      }
+    }
+
+    textarea{
+      width: 100%;
+      border: none;
+      font-size: 13px;
+      font-family: Roboto, "Helvetica Neue", sans-serif;
+      padding-top: 10px;
+      box-sizing: border-box;
+    }
+
+    textarea:focus{
+      outline: none;
+    }
+
+    .input-picker{
+      visibility: hidden;
+    }
+
+  }
+
+  .sem-dado{
+    div{
+      opacity: 0.5;
+    }
+  }
+
+  .btn-form{
+    background-color: var(--cinza);
+    border: none;
+  }
+}
+
+.rodape{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: gray;
+  font-size: 12px;
+  padding: 15px;
+
+  .icone-lixeira{
+    width: 17px;
+    align-self: flex-end;
+    margin-left: 100px;
+    cursor: pointer;
+  }
+}
+
+
+

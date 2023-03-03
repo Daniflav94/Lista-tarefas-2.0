@@ -1,0 +1,43 @@
+/* You can add global styles to this file, and also import other style files */
+@import './variaveis.scss';
+
+html, body { height: 100%; }
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: whitesmoke;
+}
+
+.mat-mdc-snack-bar-container {
+  --mat-mdc-snack-bar-button-color: var(--verde);
+  --mdc-snackbar-container-color: whiteSmoke;
+  --mdc-snackbar-supporting-text-color: var(--black);
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  background-color: gainsboro;
+  border-radius: 8px;
+  opacity: 0.6;
+}
+::-webkit-scrollbar-track {
+  background: gainsboro;
+  border-radius: 8px;
+  opacity: 0.6;
+}
+::-webkit-scrollbar-track-piece {
+  background: gainsboro;
+  border-radius: 8px;
+  opacity: 0.6;
+}
+::-webkit-scrollbar-thumb {
+  background: rgb(194, 194, 194);
+  border-radius: 8px;
+  height: 20px;
+}
+
+
+
+
+
+

@@ -1,0 +1,357 @@
+app-sidenav{
+  z-index: 2;
+}
+
+.azul{
+  color: rgb(72, 113, 201);
+  fill: rgb(72, 113, 201);
+}
+
+.cinza{
+  fill: #707070;
+  color: #707070;
+}
+
+.vermelho{
+  fill: rgb(215, 57, 57);
+  color: rgb(215, 57, 57);
+}
+
+
+.container{
+  margin-left: 300px;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+
+  .background {
+      object-fit: cover;
+      width: 88%;
+      height: 100vh;
+      position: fixed;
+      z-index: 1;
+    }
+
+  .header{
+    display: flex;
+    margin: 45px 160px 30px 160px;
+    z-index: 2;
+    position: relative;
+    width: 61%;
+    justify-content: space-between;
+
+    h1{
+      font-size: 35px;
+      color: white;
+      font-weight: 500;
+      z-index: 2;
+      margin: 0 0 0 10px;
+    }
+
+    div{
+      display: flex;
+      align-items: center;
+    }
+
+    .pontos{
+      cursor: pointer;
+      border-radius: 50%;
+      padding: 7px;
+      width: 25px;
+    }
+
+    .pontos:hover{
+      background-color: #91919122;
+    }
+
+  }
+
+  .tarefas, .tarefas-concluidas{
+    z-index: 2;
+    position: relative;
+    overflow-y: auto;
+    width: 65%;
+    display: flex;
+    flex-direction: column;
+    margin-left: 160px;
+    margin-bottom: 10px;
+
+    .tarefa{
+      background-color: white;
+      width: 93.7%;
+      height: 70px;
+      box-sizing: border-box;
+      padding: 15px;
+      border-radius: 5px;
+      z-index: 2;
+      margin-bottom: 5px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      opacity: 0.9;
+
+      div{
+        display: flex;
+      }
+
+      .nome-data{
+        display: flex;
+        flex-direction: column;
+
+        .data {
+          color: #707070;
+          font-size: 12px;
+          display: flex;
+          align-items: center;
+          margin-top: 5px;
+
+          img{
+            margin-right: 8px;
+          }
+
+          .nota{
+            opacity: 0.8;
+          }
+
+          div{
+            display: flex;
+            align-items: center;
+
+            svg{
+              width: 14.5px;
+              height: 14px;
+              margin-right: 5px;
+            }
+
+            span{
+              margin-right: 10px;
+            }
+          }
+
+        }
+      }
+      .bolinha{
+        width: 25px;
+        margin-right: 20px;
+        cursor: pointer;
+
+        svg{
+          width: 20px;
+          fill: gray;
+        }
+      }
+
+      .icone{
+        width: 18px;
+        height: 18px;
+        margin-right: 15px;
+        cursor: pointer;
+      }
+
+      .icone-estrela{
+        opacity: 0.8;
+        width: 18px;
+        height: 18px;
+        cursor: pointer;
+      }
+
+      .icone:last-child{
+        margin-right: 0;
+      }
+
+      .icone:hover{
+        opacity: 0.8;
+      }
+
+      .opacidade{
+        opacity: 0.9;
+      }
+
+      .seta{
+        width: 10px;
+        height: 10px;
+        position: relative;
+        top:4px;
+        left: -29px;
+        visibility: hidden;
+        cursor: pointer;
+      }
+
+      .bolinha:hover{
+        .seta{
+          visibility: visible;
+        }
+      }
+    }
+
+    .tarefa:hover{
+      opacity: 1;
+    }
+  }
+
+  .btn-concluidas{
+    z-index: 2;
+    width: 100px;
+    margin-left: 160px;
+    margin-bottom: 10px;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: rgba(231, 228, 228, 0.939);
+    border: none;
+    border-radius: 5px;
+    font-size: 13px;
+  }
+
+  .btn-concluidas:hover{
+    background-color: white;
+    cursor: pointer;
+  }
+
+  .tarefas{
+    max-height: 380px;
+  }
+
+  .tarefas-concluidas{
+    max-height: 280px;
+  }
+
+  .nova-tarefa{
+    display: flex;
+    justify-content: space-between;
+    width: 60.9%;
+    height: 50px;
+    margin-left: 160px;
+    bottom: 25px;
+    position: absolute;
+
+    .tarefa{
+      background-color: rgba(231, 228, 228, 0.939);
+      width: 100%;
+      height: 50px;
+      box-sizing: border-box;
+      padding: 15px 15px 15px 43px;
+      border-radius: 5px;
+      z-index: 2;
+      border: none;
+      position: absolute;
+
+    }
+
+    .tarefa:hover{
+      background-color: white;
+    }
+
+    input:focus{
+      outline: none;
+      background-color: white;
+    }
+
+    .icone-adicionar{
+      position: relative;
+      z-index: 3;
+      cursor: pointer;
+      width: 30px;
+      height: 50px;
+      border: none;
+      border-radius: 5px;
+      background-color: transparent;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .icone-adicionar:hover{
+      background-color: white;
+    }
+
+    .botoes{
+      display: flex;
+      z-index: 3;
+      width: auto;
+      margin-right: 20px;
+      box-sizing: border-box;
+
+      .icone{
+        width: auto;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+        opacity: 0.85;
+
+        input{
+          background-color: transparent;
+          border: none;
+          width: 5px;
+          visibility: hidden;
+        }
+
+        span{
+          margin: 5px;
+          width: auto;
+          text-transform: lowercase;
+        }
+
+        span::first-letter{
+          text-transform: uppercase;
+        }
+
+        svg{
+          fill: #333333;
+        }
+      }
+
+      .icone:hover{
+        opacity: 0.7;
+      }
+    }
+  }
+
+}
+
+::ng-deep .mat-mdc-menu-item{
+  span{
+    font-size: 14px;
+  }
+  img{
+    margin-right: 7px;
+  }
+
+  .opacidade{
+    opacity: 0.8;
+  }
+}
+
+::ng-deep.tooltip{
+  text-transform: lowercase;
+}
+
+.concluido{
+  .seta{
+    visibility: visible;
+  }
+  .nome-tarefa{
+    text-decoration: line-through;
+    color: gray;
+  }
+
+  .data svg{
+    fill: gray;
+  }
+
+}
+
+
+
+
+
+
+
+
