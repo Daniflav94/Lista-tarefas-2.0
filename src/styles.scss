@@ -22,22 +22,23 @@ body {
 
 ::-webkit-scrollbar {
   width: 6px;
-  background-color: gainsboro;
+  background-color: rgba(220, 220, 220, 0.714);
   border-radius: 8px;
+  margin-left: 10px;
   opacity: 0.6;
 }
 ::-webkit-scrollbar-track {
-  background: gainsboro;
+  background: rgba(220, 220, 220, 0.714);
   border-radius: 8px;
   opacity: 0.6;
 }
 ::-webkit-scrollbar-track-piece {
-  background: gainsboro;
+  background: rgba(220, 220, 220, 0.714);
   border-radius: 8px;
   opacity: 0.6;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgb(194, 194, 194);
+  background: rgba(76, 76, 76, 0.525);
   border-radius: 8px;
   height: 20px;
 }

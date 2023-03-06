@@ -47,9 +47,6 @@ export class ImportanteComponent {
       lista.forEach(tarefa => {
         if(tarefa.favorito){
           this.tarefasImportantes.push(tarefa)
-          if(tarefa.concluida){
-            this.tarefasConcluidas.push(tarefa)
-          }
         }
 
         const data = new Date(tarefa.data as Date).toLocaleDateString()
@@ -76,6 +73,18 @@ export class ImportanteComponent {
           this.tarefasService.editarTarefa(tarefa).subscribe()
         }
       })
+    });
+  }
+
+  listarConcluidas(){
+    this.tarefasService.listarTarefas().subscribe((lista) => {
+      lista.forEach((tarefa) => {
+        if(tarefa.favorito){
+          if(tarefa.concluida){
+            this.tarefasConcluidas.push(tarefa)
+          }
+        }
+      });
     });
   }
 

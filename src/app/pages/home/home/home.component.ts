@@ -19,10 +19,11 @@ export class HomeComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.listarTarefas();
+    this.listarTarefas()
+    this.listarConcluidas()
   }
 
-  tarefas: Tarefa[] = [];
+  tarefas: Tarefa[] = []
   tarefa: Tarefa = {
     _id: 0,
     nome: '',
@@ -70,10 +71,6 @@ export class HomeComponent implements OnInit {
         const data = new Date(tarefa.data as Date).toLocaleDateString();
         const getData = new Date(tarefa.data as Date).getTime();
 
-        if(tarefa.concluida){
-          this.tarefasConcluidas.push(tarefa)
-        }
-
         if (data == hoje.toLocaleDateString()) {
           tarefa.meuDia = true;
           this.tarefasService.editarTarefa(tarefa).subscribe();
@@ -93,6 +90,16 @@ export class HomeComponent implements OnInit {
         if (data == ontem.toLocaleDateString() || getData < ontem.getTime()) {
           tarefa.ontem = true;
           this.tarefasService.editarTarefa(tarefa).subscribe();
+        }
+      });
+    });
+  }
+
+  listarConcluidas(){
+    this.tarefasService.listarTarefas().subscribe((lista) => {
+      lista.forEach((tarefa) => {
+        if(tarefa.concluida){
+          this.tarefasConcluidas.push(tarefa)
         }
       });
     });
