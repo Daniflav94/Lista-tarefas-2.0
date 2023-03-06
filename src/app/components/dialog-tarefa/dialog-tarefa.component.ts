@@ -26,10 +26,12 @@ export class DialogTarefaComponent {
       const tarefaEditada = this.tarefa
       this.tarefasService.editarTarefa(tarefaEditada).subscribe(resposta => {
         this.notificacao.mostrarMensagem("Tarefa editada!")
-
+        setTimeout(function () {
+        location.reload();
+      }, 2000)
       })
-
   }
+
 
   escolherRepeticao(repeticao: string) {
     if (repeticao == 'diariamente') {

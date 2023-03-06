@@ -21,6 +21,7 @@ export class MeuDiaComponent {
 
   ngOnInit(): void {
     this.listarTarefas()
+    console.log(this.tarefasDoDia)
     this.formatarData()
   }
 
@@ -100,7 +101,7 @@ export class MeuDiaComponent {
   listarTarefas() {
     this.tarefasService.listarTarefas().subscribe(lista => {
       lista.forEach(tarefa => {
-        if(tarefa.meuDia == true){
+        if(tarefa.meuDia){
           this.tarefasDoDia.push(tarefa)
           if(tarefa.concluida){
             this.tarefasConcluidas.push(tarefa)

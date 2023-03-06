@@ -19,11 +19,11 @@ export class HomeComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.listarTarefas()
+    this.listarTarefas();
     this.listarConcluidas()
   }
 
-  tarefas: Tarefa[] = []
+  tarefas: Tarefa[] = [];
   tarefa: Tarefa = {
     _id: 0,
     nome: '',
