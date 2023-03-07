@@ -3,10 +3,10 @@
     <ul>
       <div class="header-nav">
         <li class="usuario">
-          <img src="" alt="" />
+          <img src="../../../assets/img/boxed-water-is-better-5Lw1U5BIumE-unsplash.jpg" />
           <div class="dados-usuario">
-            <span class="nome-usuario"></span>
-            <span class="email-usuario"></span>
+            <span class="nome-usuario">Daniele</span>
+            <span class="email-usuario">dani@gmail.com</span>
           </div>
         </li>
         <div class="listas">
@@ -40,17 +40,19 @@
       </div>
       <mat-divider></mat-divider>
       <div class="listas-usuario">
-        <li>
-          <img src="/assets/icons/cardapio.png" width="15px" class="icone" />
-          <span>lista</span>
-        </li>
-        <li class="nova-lista">
-          <button>
-            <img src="/assets/icons/mais.png" width="22px" class="icone" />
-            <span>Nova Lista</span>
-          </button>
-        </li>
+        <div class="lista-usuario" *ngFor="let lista of listas">
+          <li routerLinkActive="active">
+            <img src="/assets/icons/cardapio.png" width="15px" class="icone" />
+            <span>{{lista.nome}}</span>
+          </li>
+        </div>
       </div>
+      <li class="nova-lista">
+        <form>
+          <button type="submit" (click)="novaLista()"><img src="/assets/icons/mais.png" width="22px" class="icone" /></button>
+          <input name="nome" placeholder="Nova Lista" [(ngModel)]="lista.nome">
+        </form>
+      </li>
     </ul>
   </nav>
   <div class="container">

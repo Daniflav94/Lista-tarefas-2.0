@@ -1,3 +1,4 @@
+import { Lista } from "./lista";
 import { Repeticao } from "./repeticao";
 
 export interface Tarefa {
@@ -13,4 +14,5 @@ export interface Tarefa {
   amanha?: boolean;
   ontem?: boolean;
   dataConclusao?: Date;
+  lista?: Lista;
 }

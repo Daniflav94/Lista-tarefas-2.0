@@ -17,23 +17,10 @@ export class TarefasService {
     private notificationService: NotificationService
   ) {}
 
-  tarefasDoDia: Tarefa[] = [];
-  tarefas: Tarefa[] = [];
-  importantes: Tarefa[] = [];
-
 
   listarTarefas() {
     return this.httpClient.get<Tarefa[]>(this.API).pipe( //pipe permite manipulação dos dados
-    first(), //vai obter a primeira resposta do servidor e finaliza a inscrição do rxjs
-    tap(tarefas => tarefas.forEach(tarefa => {
-      this.tarefas = tarefas
-      if(tarefa.meuDia == true){
-        this.tarefasDoDia.push(tarefa)
-      }
-      if(tarefa.favorito == true){
-        this.importantes.push(tarefa)
-      }
-    }))
+    first() //vai obter a primeira resposta do servidor e finaliza a inscrição do rxjs
     )
   }
 

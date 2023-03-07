@@ -17,7 +17,7 @@ nav{
     padding: 0;
 
     .header-nav{
-      height: 60%;
+      height: 33%;
     }
 
     li{
@@ -53,9 +53,46 @@ nav{
       border-radius: 5px;
     }
 
+    li:first-child:hover{
+      background-color: transparent;
+    }
+
     mat-divider{
       margin-bottom: 15px;
       width: 100%;
+    }
+
+    .usuario{
+      width: 100%;
+      display: flex;
+      justify-content: flex-start;
+      margin-bottom: 30px;
+
+      img{
+        border-radius: 100%;
+        width: 70px;
+        height: 70px;
+        object-fit: cover;
+        margin-right: 25px;
+      }
+
+      .dados-usuario{
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+
+        .nome-usuario{
+          text-align: start;
+          width: 100%;
+          font-weight: 500;
+        }
+
+        .email-usuario{
+          font-size: 12px;
+          color: rgb(102, 102, 102);
+        }
+      }
+
     }
 
     .qntd-tarefas{
@@ -71,32 +108,60 @@ nav{
     }
 
     .listas-usuario{
+      height: 500px;
+      overflow-y: auto;
+    }
+
+    .lista-usuario{
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      height: 40%;
+      height: auto;
 
       li{
         display: flex;
         justify-content: flex-start;
+        cursor: pointer;
       }
+
+      li:hover{
+        background-color: var(--cinza);
+        border-radius: 5px;
+      }
+
     }
 
     .nova-lista{
-      vertical-align: bottom;
-      width: 100%;
+      width: 93%;
       padding: 10px;
       margin: 0;
+      position: absolute;
+      bottom: 10px;
     }
 
-    .nova-lista button{
-      background-color: transparent;
-      border: none;
-      color: var(--preto);
-      font-size: 15px;
+    .nova-lista form{
       display: flex;
       align-items: center;
+
+      button{
+        background-color: transparent;
+        border: none;
+        color: var(--preto);
+        font-size: 15px;
+        cursor: pointer;
+      }
+
+      input{
+        padding: 5px;
+        background-color: transparent;
+        border: none;
+      }
+
+      input:focus{
+        outline: none;
+      }
     }
+
     .active{
       font-weight: 500;
       background-color: var(--cinza);
