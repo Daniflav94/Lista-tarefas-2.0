@@ -31,7 +31,7 @@
             <div>
               <a routerLink="/importante">
                 <img src="/assets/icons/estrela.png" width="16px" class="icone" />
-                <span>Importante</span>
+                Importante
               </a>
             </div>
 
@@ -41,10 +41,12 @@
       <mat-divider></mat-divider>
       <div class="listas-usuario">
         <div class="lista-usuario" *ngFor="let lista of listas">
-          <li routerLinkActive="active">
-            <img src="/assets/icons/cardapio.png" width="15px" class="icone" />
-            <span>{{lista.nome}}</span>
-          </li>
+          <a [routerLink]="['/lista', lista._id]">
+            <li routerLinkActive="active">
+              <img src="/assets/icons/cardapio.png" width="15px" class="icone" />
+              <span>{{lista.nome}}</span>
+            </li>
+          </a>
         </div>
       </div>
       <li class="nova-lista">

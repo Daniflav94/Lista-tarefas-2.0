@@ -23,7 +23,12 @@ const routes: Routes = [
     loadChildren: () =>
       import('./pages/importante/importante.module').then(m => m.ImportanteModule)
   },
-  
+  {
+    path: 'lista',
+    loadChildren: () =>
+      import('./pages/lista/lista.module').then(m => m.ListaModule)
+  },
+
 ];
 
 @NgModule({
