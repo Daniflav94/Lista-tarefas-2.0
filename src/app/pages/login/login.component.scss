@@ -1,0 +1,104 @@
+.container{
+  display: flex;
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.login{
+  display: flex;
+  flex-direction: column;
+  width: 45%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+
+  .login-container{
+    width: 60%;
+    height: 40%;
+
+    h1{
+      width: 100%;
+      font-size: 35px;
+      color: rgb(100, 100, 100);
+      font-weight: 500;
+      margin-bottom: 35px;
+    }
+
+    form{
+      display: flex;
+      flex-direction: column;
+
+      label{
+        font-weight: 500;
+        color: rgb(87, 87, 87);
+      }
+
+      input{
+        border: 1px solid rgb(194, 194, 194);
+        border-radius: 5px;
+        padding: 10px;
+        margin-bottom: 10px;
+      }
+
+      input:focus{
+        outline: none;
+      }
+
+      .btn-cadastro{
+        width: 100%;
+        height: 35px;
+        display: flex;
+        margin-top: 20px;
+
+        button{
+          width: 40%;
+          background-color: #004a83;
+          border: none;
+          border-radius: 25px;
+          color: aliceblue;
+          height: 100%;
+          margin-right: 30px;
+          cursor: pointer;
+        }
+
+        button:hover{
+          opacity: 0.9;
+        }
+
+        span{
+          width: 60%;
+
+          strong{
+            color: #004a83;
+            font-weight: 500;
+            text-decoration: underline;
+            cursor: pointer;
+          }
+
+          strong:hover{
+            opacity: 0.8;
+          }
+        }
+      }
+    }
+  }
+
+}
+
+.imagem{
+  background-color: rgb(220, 220, 220);
+  width: 55%;
+  height: 100%;
+  display: flex;
+  align-items: end;
+  justify-content: center;
+
+  img{
+    position: relative;
+    right: 50px;
+
+  }
+
+}
