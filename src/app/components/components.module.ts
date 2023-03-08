@@ -6,13 +6,15 @@ import { RouterModule } from '@angular/router';
 import { DialogTarefaComponent } from './dialog-tarefa/dialog-tarefa.component';
 import { FormsModule } from '@angular/forms';
 import { PipesModule } from '../pipes/pipes.module';
+import { DialogExcluirComponent } from './dialog-excluir/dialog-excluir.component';
 
 
 
 @NgModule({
   declarations: [
     SidenavComponent,
-    DialogTarefaComponent
+    DialogTarefaComponent,
+    DialogExcluirComponent
   ],
   imports: [
     CommonModule,

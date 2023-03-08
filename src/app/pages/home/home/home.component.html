@@ -50,6 +50,7 @@
         <mat-icon *ngIf="expandir">expand_more</mat-icon>
         Concluída ({{tarefasConcluidas.length}})
       </button>
+      <button class="apagar" *ngIf="expandir" (click)="openDialogExcluir()">Apagar todas</button>
       <section class="tarefas-concluidas" *ngIf="expandir">
         <div *ngFor="let tarefa of tarefasConcluidas">
           <div class="tarefa" [ngClass]="{'concluido': tarefa.concluida}" *ngIf="tarefa.concluida">

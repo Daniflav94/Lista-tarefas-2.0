@@ -20,6 +20,11 @@ nav{
       height: 32%;
     }
 
+    a{
+      text-decoration: none;
+      color: var(--preto);
+    }
+
     li{
       list-style: none;
       display: flex;
@@ -39,11 +44,6 @@ nav{
       img{
         margin-right: 15px;
         opacity: 0.8;
-      }
-
-      a{
-        text-decoration: none;
-        color: var(--preto);
       }
 
     }

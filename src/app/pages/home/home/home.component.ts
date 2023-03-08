@@ -5,6 +5,7 @@ import { DialogTarefaComponent } from 'src/app/components/dialog-tarefa/dialog-t
 import { Tarefa } from 'src/app/models/tarefa';
 import { TarefasService } from 'src/app/services/tarefas.service';
 import { NotificationService } from 'src/app/services/notification.service';
+import { DialogExcluirComponent } from 'src/app/components/dialog-excluir/dialog-excluir.component';
 
 @Component({
   selector: 'app-home',
@@ -67,6 +68,7 @@ export class HomeComponent implements OnInit {
 
     this.tarefasService.listarTarefas().subscribe((lista) => {
       this.tarefas = lista;
+      console.log(lista)
       lista.forEach((tarefa) => {
         const data = new Date(tarefa.data as Date).toLocaleDateString();
         const getData = new Date(tarefa.data as Date).getTime();
@@ -117,7 +119,7 @@ export class HomeComponent implements OnInit {
           dataConclusao: undefined,
           criadaEm: new Date(),
           repeticao: undefined,
-          data: undefined,
+          data: undefined
         };
       });
     } else {
@@ -139,14 +141,16 @@ export class HomeComponent implements OnInit {
     if (tarefa.concluida) {
       tarefa.concluida = false;
       tarefa.dataConclusao = undefined;
-      this.tarefasService.editarTarefa(tarefa).subscribe();
       let index = this.tarefasConcluidas.indexOf(tarefa)
       this.tarefasConcluidas.splice(index, 1)
+      this.tarefasService.editarTarefa(tarefa).subscribe(resposta => {
+        this.listarTarefas();
+      });
     } else {
       tarefa.concluida = true;
       tarefa.dataConclusao = new Date();
-      this.tarefasService.editarTarefa(tarefa).subscribe();
       this.tarefasConcluidas.push(tarefa)
+      this.tarefasService.editarTarefa(tarefa).subscribe();
     }
   }
 
@@ -159,6 +163,13 @@ export class HomeComponent implements OnInit {
       width: '350px',
       height: 'auto',
       data: tarefa,
+    });
+  }
+
+  openDialogExcluir() {
+    this.dialog.open(DialogExcluirComponent, {
+      width: '370px',
+      height: 'auto',
     });
   }
 }

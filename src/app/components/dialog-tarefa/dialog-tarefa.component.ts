@@ -52,11 +52,14 @@ export class DialogTarefaComponent {
   }
 
   deletar(tarefa: Tarefa){
-    this.tarefasService.deletarTarefa(tarefa._id).subscribe(resposta => {
-      this.notificacao.mostrarMensagem("Tarefa deletada!")
-      setTimeout(function () {
-        location.reload();
-      }, 2000)
+    tarefa.repeticao = undefined
+    this.tarefasService.editarTarefa(tarefa).subscribe(resposta => {
+      this.tarefasService.deletarTarefa(tarefa._id).subscribe(resposta => {
+        this.notificacao.mostrarMensagem("Tarefa deletada!")
+        setTimeout(function () {
+          location.reload();
+        }, 2000)
+      })
     })
   }
 

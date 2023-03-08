@@ -15,4 +15,5 @@ export interface Tarefa {
   ontem?: boolean;
   dataConclusao?: Date;
   lista?: Lista;
+  status?: string;
 }

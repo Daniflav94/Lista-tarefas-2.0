@@ -21,6 +21,7 @@ export class ImportanteComponent {
 
   ngOnInit(): void {
     this.listarTarefas()
+    this.listarConcluidas()
   }
 
   tarefasImportantes: Tarefa[] = []

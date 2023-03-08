@@ -76,7 +76,7 @@ app-sidenav{
     display: flex;
     flex-direction: column;
     margin-left: 160px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 
     .tarefa{
       background-color: white;
@@ -195,7 +195,7 @@ app-sidenav{
     z-index: 2;
     width: 120px;
     margin-left: 160px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     padding: 4px;
     display: flex;
     align-items: center;
@@ -209,6 +209,23 @@ app-sidenav{
   .btn-concluidas:hover{
     background-color: white;
     cursor: pointer;
+  }
+
+  .apagar{
+    z-index: 2;
+    border: none;
+    background-color: transparent;
+    width: 120px;
+    margin-left: 160px;
+    margin-bottom: 10px;
+    padding: 0;
+    text-align: start;
+    color: #707070;
+    cursor: pointer;
+  }
+
+  .apagar:hover{
+    color: #333333;
   }
 
   .tarefas{
