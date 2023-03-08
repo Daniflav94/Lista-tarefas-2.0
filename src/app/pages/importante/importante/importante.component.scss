@@ -230,6 +230,23 @@ app-sidenav{
     cursor: pointer;
   }
 
+  .apagar{
+    z-index: 2;
+    border: none;
+    background-color: transparent;
+    width: 120px;
+    margin-left: 160px;
+    margin-bottom: 10px;
+    padding: 0;
+    text-align: start;
+    color: #646464;
+    cursor: pointer;
+  }
+
+  .apagar:hover{
+    color: #333333;
+  }
+
   .tarefas{
     max-height: 380px;
   }

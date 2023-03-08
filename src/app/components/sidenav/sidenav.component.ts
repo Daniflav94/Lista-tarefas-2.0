@@ -1,4 +1,5 @@
 import { Component, Output, EventEmitter, SimpleChanges, OnChanges, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Lista } from 'src/app/models/lista';
 import { Tarefa } from 'src/app/models/tarefa';
 import { ListaService } from 'src/app/services/lista.service';
@@ -15,7 +16,8 @@ export class SidenavComponent implements OnInit{
   constructor(
     private tarefasService: TarefasService,
     private listaService: ListaService,
-    private notification: NotificationService
+    private notification: NotificationService,
+    private router: Router
   ){
   }
 
@@ -62,6 +64,11 @@ export class SidenavComponent implements OnInit{
     }else{
       this.notification.mostrarMensagem("Nome da lista não pode estar em branco!")
     }
+  }
+
+  atualizar(idLista: number){
+    //this.router.navigateByUrl('/lista/' + idLista)
+    window.location.replace('/lista/' + idLista)
 
   }
 }

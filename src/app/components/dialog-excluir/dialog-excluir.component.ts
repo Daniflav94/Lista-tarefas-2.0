@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { NotificationService } from 'src/app/services/notification.service';
 import { TarefasService } from 'src/app/services/tarefas.service';
 
@@ -10,6 +11,8 @@ import { TarefasService } from 'src/app/services/tarefas.service';
 export class DialogExcluirComponent {
 
   constructor(
+    @Inject(MAT_DIALOG_DATA) private list: string,
+
     private tarefasService: TarefasService,
     private notificacao: NotificationService,
   ){}
@@ -17,9 +20,20 @@ export class DialogExcluirComponent {
   excluir() {
     this.tarefasService.listarTarefas().subscribe(lista => {
       lista.forEach(tarefa => {
-        if(tarefa.concluida){
-          this.tarefasService.deletarTarefa(tarefa._id).subscribe()
+        if(this.list == 'home'){
+          if(tarefa.concluida){
+            this.tarefasService.deletarTarefa(tarefa._id).subscribe()
+          }
+        }else if(this.list == 'importante'){
+          if(tarefa.favorito && tarefa.concluida){
+            this.tarefasService.deletarTarefa(tarefa._id).subscribe()
+          }
+        }else if(this.list == 'meuDia'){
+          if(tarefa.meuDia && tarefa.concluida){
+            this.tarefasService.deletarTarefa(tarefa._id).subscribe()
+          }
         }
+
       })
       this.notificacao.mostrarMensagem("Tarefas concluídas apagadas!")
       setTimeout(function () {

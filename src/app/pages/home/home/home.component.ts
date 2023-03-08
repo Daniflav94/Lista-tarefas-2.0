@@ -67,32 +67,36 @@ export class HomeComponent implements OnInit {
     amanha.setDate(hoje.getDate() + 1);
 
     this.tarefasService.listarTarefas().subscribe((lista) => {
-      this.tarefas = lista;
-      console.log(lista)
       lista.forEach((tarefa) => {
         const data = new Date(tarefa.data as Date).toLocaleDateString();
         const getData = new Date(tarefa.data as Date).getTime();
 
-        if (data == hoje.toLocaleDateString()) {
-          tarefa.meuDia = true;
-          this.tarefasService.editarTarefa(tarefa).subscribe();
-        } else if (data != hoje.toLocaleDateString()) {
-          tarefa.meuDia = false;
-          this.tarefasService.editarTarefa(tarefa).subscribe();
+        if(tarefa.lista == null){
+
+          this.tarefas.push(tarefa)
+
+          if (data == hoje.toLocaleDateString()) {
+            tarefa.meuDia = true;
+            this.tarefasService.editarTarefa(tarefa).subscribe();
+          } else if (data != hoje.toLocaleDateString()) {
+            tarefa.meuDia = false;
+            this.tarefasService.editarTarefa(tarefa).subscribe();
+          }
+
+          if (data == amanha.toLocaleDateString()) {
+            tarefa.amanha = true;
+            this.tarefasService.editarTarefa(tarefa).subscribe();
+          } else if (data != amanha.toLocaleDateString()) {
+            tarefa.amanha = false;
+            this.tarefasService.editarTarefa(tarefa).subscribe();
+          }
+
+          if (data == ontem.toLocaleDateString() || getData < ontem.getTime()) {
+            tarefa.ontem = true;
+            this.tarefasService.editarTarefa(tarefa).subscribe();
+          }
         }
 
-        if (data == amanha.toLocaleDateString()) {
-          tarefa.amanha = true;
-          this.tarefasService.editarTarefa(tarefa).subscribe();
-        } else if (data != amanha.toLocaleDateString()) {
-          tarefa.amanha = false;
-          this.tarefasService.editarTarefa(tarefa).subscribe();
-        }
-
-        if (data == ontem.toLocaleDateString() || getData < ontem.getTime()) {
-          tarefa.ontem = true;
-          this.tarefasService.editarTarefa(tarefa).subscribe();
-        }
       });
     });
   }
@@ -100,8 +104,10 @@ export class HomeComponent implements OnInit {
   listarConcluidas(){
     this.tarefasService.listarTarefas().subscribe((lista) => {
       lista.forEach((tarefa) => {
-        if(tarefa.concluida){
-          this.tarefasConcluidas.push(tarefa)
+        if(tarefa.lista == null){
+          if(tarefa.concluida){
+            this.tarefasConcluidas.push(tarefa)
+          }
         }
       });
     });
@@ -166,10 +172,11 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  openDialogExcluir() {
+  openDialogExcluir(lista: string) {
     this.dialog.open(DialogExcluirComponent, {
       width: '370px',
       height: 'auto',
+      data: lista
     });
   }
 }

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { DialogExcluirComponent } from 'src/app/components/dialog-excluir/dialog-excluir.component';
 import { DialogTarefaComponent } from 'src/app/components/dialog-tarefa/dialog-tarefa.component';
 import { Tarefa } from 'src/app/models/tarefa';
 import { NotificationService } from 'src/app/services/notification.service';
@@ -46,32 +47,34 @@ export class ImportanteComponent {
 
     this.tarefasService.listarTarefas().subscribe(lista => {
       lista.forEach(tarefa => {
-        if(tarefa.favorito){
-          this.tarefasImportantes.push(tarefa)
-        }
 
-        const data = new Date(tarefa.data as Date).toLocaleDateString()
-        const getData = new Date(tarefa.data as Date).getTime()
+        if(tarefa.lista == null){
+          if(tarefa.favorito){
+            this.tarefasImportantes.push(tarefa)
+          }
+          const data = new Date(tarefa.data as Date).toLocaleDateString()
+          const getData = new Date(tarefa.data as Date).getTime()
 
-        if(data == hoje.toLocaleDateString()){
-          tarefa.meuDia = true
-          this.tarefasService.editarTarefa(tarefa).subscribe()
-        }else if(data != hoje.toLocaleDateString()){
-          tarefa.meuDia  = false;
-          this.tarefasService.editarTarefa(tarefa).subscribe()
-        }
+          if(data == hoje.toLocaleDateString()){
+            tarefa.meuDia = true
+            this.tarefasService.editarTarefa(tarefa).subscribe()
+          }else if(data != hoje.toLocaleDateString()){
+            tarefa.meuDia  = false;
+            this.tarefasService.editarTarefa(tarefa).subscribe()
+          }
 
-        if(data == amanha.toLocaleDateString()){
-          tarefa.amanha = true
-          this.tarefasService.editarTarefa(tarefa).subscribe()
-        }else if(data != amanha.toLocaleDateString()){
-          tarefa.amanha = false
-          this.tarefasService.editarTarefa(tarefa).subscribe()
-        }
+          if(data == amanha.toLocaleDateString()){
+            tarefa.amanha = true
+            this.tarefasService.editarTarefa(tarefa).subscribe()
+          }else if(data != amanha.toLocaleDateString()){
+            tarefa.amanha = false
+            this.tarefasService.editarTarefa(tarefa).subscribe()
+          }
 
-        if(data == ontem.toLocaleDateString() || getData < ontem.getTime()){
-          tarefa.ontem = true
-          this.tarefasService.editarTarefa(tarefa).subscribe()
+          if(data == ontem.toLocaleDateString() || getData < ontem.getTime()){
+            tarefa.ontem = true
+            this.tarefasService.editarTarefa(tarefa).subscribe()
+          }
         }
       })
     });
@@ -80,9 +83,11 @@ export class ImportanteComponent {
   listarConcluidas(){
     this.tarefasService.listarTarefas().subscribe((lista) => {
       lista.forEach((tarefa) => {
-        if(tarefa.favorito){
-          if(tarefa.concluida){
-            this.tarefasConcluidas.push(tarefa)
+        if(tarefa.lista == null){
+          if(tarefa.favorito){
+            if(tarefa.concluida){
+              this.tarefasConcluidas.push(tarefa)
+            }
           }
         }
       });
@@ -145,6 +150,14 @@ export class ImportanteComponent {
       width: '350px',
       height: 'auto',
       data: tarefa,
+    });
+  }
+
+  openDialogExcluir(lista: string) {
+    this.dialog.open(DialogExcluirComponent, {
+      width: '370px',
+      height: 'auto',
+      data: lista
     });
   }
 

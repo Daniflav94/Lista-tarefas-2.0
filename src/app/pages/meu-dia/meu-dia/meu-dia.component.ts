@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { DateAdapter } from '@angular/material/core';
 import { MatDialog } from '@angular/material/dialog';
+import { DialogExcluirComponent } from 'src/app/components/dialog-excluir/dialog-excluir.component';
 import { DialogTarefaComponent } from 'src/app/components/dialog-tarefa/dialog-tarefa.component';
 import { Tarefa } from 'src/app/models/tarefa';
 import { TarefasService } from 'src/app/services/tarefas.service';
@@ -21,8 +22,8 @@ export class MeuDiaComponent {
 
   ngOnInit(): void {
     this.listarTarefas()
-    console.log(this.tarefasDoDia)
     this.formatarData()
+
   }
 
   tarefasDoDia: Tarefa[] = [];
@@ -101,10 +102,12 @@ export class MeuDiaComponent {
   listarTarefas() {
     this.tarefasService.listarTarefas().subscribe(lista => {
       lista.forEach(tarefa => {
-        if(tarefa.meuDia){
-          this.tarefasDoDia.push(tarefa)
-          if(tarefa.concluida){
-            this.tarefasConcluidas.push(tarefa)
+        if(tarefa.lista == null){
+          if(tarefa.meuDia){
+            this.tarefasDoDia.push(tarefa)
+            if(tarefa.concluida){
+              this.tarefasConcluidas.push(tarefa)
+            }
           }
         }
       })
@@ -162,6 +165,14 @@ export class MeuDiaComponent {
       width: '350px',
       height: 'auto',
       data: tarefa,
+    });
+  }
+
+  openDialogExcluir(lista: string) {
+    this.dialog.open(DialogExcluirComponent, {
+      width: '370px',
+      height: 'auto',
+      data: lista
     });
   }
 }

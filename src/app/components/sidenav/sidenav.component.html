@@ -1,59 +1,59 @@
 <div class="container">
   <nav>
-    <ul>
+    <div class="listagem">
       <div class="header-nav">
-        <li class="usuario">
+        <div class="usuario">
           <img src="../../../assets/img/boxed-water-is-better-5Lw1U5BIumE-unsplash.jpg" />
           <div class="dados-usuario">
             <span class="nome-usuario">Daniele</span>
             <span class="email-usuario">dani@gmail.com</span>
           </div>
-        </li>
+        </div>
         <div class="listas">
           <a routerLink="/home">
-            <li routerLinkActive="active">
+            <div class="item" routerLinkActive="active">
               <div>
                 <img src="/assets/icons/botao-de-inicio.png" width="18px" class="icone" />
                 Tarefas
               </div>
-            </li>
+            </div>
           </a>
           <a routerLink="/meuDia">
-            <li routerLinkActive="active">
+            <div class="item" routerLinkActive="active">
               <div>
                 <img src="/assets/icons/brilho-do-sol.png" width="18px" class="icone" />
                   Meu Dia
               </div>
-            </li>
+            </div>
           </a>
           <a routerLink="/importante">
-            <li routerLinkActive="active">
+            <div class="item" routerLinkActive="active">
               <div>
                 <img src="/assets/icons/estrela.png" width="16px" class="icone" />
                 Importante
               </div>
-            </li>
+            </div>
           </a>
         </div>
       </div>
       <mat-divider></mat-divider>
       <div class="listas-usuario">
         <div class="lista-usuario" *ngFor="let lista of listas">
-          <a [routerLink]="['/lista', lista._id]">
-            <li routerLinkActive="active">
+          <a [routerLink]="['/lista', lista._id]" (click)="atualizar(lista._id)">
+            <div class="item" routerLinkActive="active">
               <img src="/assets/icons/cardapio.png" width="15px" class="icone" />
               <span>{{lista.nome}}</span>
-            </li>
+            </div>
           </a>
         </div>
       </div>
-      <li class="nova-lista">
+      <div class="nova-lista">
         <form>
           <button type="submit" (click)="novaLista()"><img src="/assets/icons/mais.png" width="22px" class="icone" /></button>
           <input name="nome" placeholder="Nova Lista" [(ngModel)]="lista.nome">
         </form>
-      </li>
-    </ul>
+      </div>
+    </div>
   </nav>
   <div class="container">
     <ng-content></ng-content>

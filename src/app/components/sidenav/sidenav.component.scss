@@ -12,12 +12,45 @@ nav{
   position: fixed;
   padding: 10px;
 
-  ul{
+  .listagem{
     width: 100%;
     padding: 0;
 
     .header-nav{
       height: 32%;
+
+      .usuario{
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+        margin-bottom: 15px;
+
+        img{
+          border-radius: 100%;
+          width: 70px;
+          height: 70px;
+          object-fit: cover;
+          margin-right: 25px;
+        }
+
+        .dados-usuario{
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-start;
+
+          .nome-usuario{
+            text-align: start;
+            width: 100%;
+            font-weight: 500;
+          }
+
+          .email-usuario{
+            font-size: 12px;
+            color: rgb(102, 102, 102);
+          }
+        }
+
+      }
     }
 
     a{
@@ -25,113 +58,68 @@ nav{
       color: var(--preto);
     }
 
-    li{
-      list-style: none;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      width: 100%;
-      padding: 12px;
-      margin-bottom: 5px;
-      font-size: 15px;
-      box-sizing: border-box;
 
-      div{
+      .item{
+        list-style: none;
         display: flex;
+        justify-content: space-between;
         align-items: center;
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 5px;
+        font-size: 15px;
+        box-sizing: border-box;
+
+        div{
+          display: flex;
+          align-items: center;
+        }
+
+        img{
+          margin-right: 15px;
+          opacity: 0.8;
+        }
+
       }
 
-      img{
-        margin-right: 15px;
-        opacity: 0.8;
+      .item:hover{
+        background-color: var(--cinza);
+        border-radius: 5px;
       }
 
-    }
 
-    li:hover{
-      background-color: var(--cinza);
-      border-radius: 5px;
-    }
-
-    li:first-child:hover{
-      background-color: transparent;
-    }
 
     mat-divider{
       margin-bottom: 15px;
       width: 100%;
     }
 
-    .usuario{
-      width: 100%;
-      display: flex;
-      justify-content: flex-start;
-      margin-bottom: 15px;
-
-      img{
-        border-radius: 100%;
-        width: 70px;
-        height: 70px;
-        object-fit: cover;
-        margin-right: 25px;
-      }
-
-      .dados-usuario{
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-
-        .nome-usuario{
-          text-align: start;
-          width: 100%;
-          font-weight: 500;
-        }
-
-        .email-usuario{
-          font-size: 12px;
-          color: rgb(102, 102, 102);
-        }
-      }
-
-    }
-
-    .qntd-tarefas{
-      background-color: #d5d5d5;
-      border: 1px solid rgb(222, 222, 222);
-      border-radius: 100%;
-      width: 23px;
-      height: 20px;
-      text-align: center;
-      padding-top: 3px;
-      font-size: 11px;
-      margin: 0;
-    }
-
     .listas-usuario{
       height: 500px;
       overflow-y: auto;
-    }
 
-    .lista-usuario{
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      height: auto;
-
-      li{
+      .lista-usuario{
         display: flex;
-        justify-content: flex-start;
-        cursor: pointer;
-      }
+        flex-direction: column;
+        justify-content: space-between;
+        height: auto;
 
-      li:hover{
-        background-color: var(--cinza);
-        border-radius: 5px;
-      }
+        .item{
+          display: flex;
+          justify-content: flex-start;
+          cursor: pointer;
+        }
 
-      a{
-        text-decoration: none;
-        color: var(--black);
+        .item:hover{
+          background-color: var(--cinza);
+          border-radius: 5px;
+        }
+
+        a{
+          text-decoration: none;
+          color: var(--black);
+        }
+
       }
 
     }
@@ -167,14 +155,13 @@ nav{
       }
     }
 
-    .active{
-      font-weight: 500;
-      background-color: var(--cinza);
-      border-radius: 5px;
-    }
   }
 
-
+  .active{
+    font-weight: 500;
+    background-color: var(--cinza);
+    border-radius: 5px;
+  }
 
 }
 
