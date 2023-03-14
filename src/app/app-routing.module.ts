@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home/home.component';
-import { LoginComponent } from './pages/login/login.component';
+import { LoginComponent } from './pages/login/login/login.component';
 
 const routes: Routes = [
   {
@@ -32,7 +32,9 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent
-  }
+  },
+  { path: 'login', loadChildren: () => import('./pages/login/login.module').then(m => m.LoginModule) },
+  { path: 'cadastro', loadChildren: () => import('./pages/cadastro/cadastro.module').then(m => m.CadastroModule) }
 
 ];
 

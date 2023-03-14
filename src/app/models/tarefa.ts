@@ -1,5 +1,5 @@
 import { Lista } from "./lista";
-import { Repeticao } from "./repeticao";
+import { Usuario } from "./usuario";
 
 export interface Tarefa {
   _id: number;
@@ -16,4 +16,5 @@ export interface Tarefa {
   dataConclusao?: Date;
   lista?: Lista;
   status?: string;
+  usuario: Usuario;
 }

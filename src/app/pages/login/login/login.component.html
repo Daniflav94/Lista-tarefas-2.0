@@ -2,13 +2,13 @@
   <div class="login">
     <div class="login-container">
       <h1>Login</h1>
-      <form>
+      <form [formGroup]="formLogin">
         <label for="email">Email</label>
-        <input type="text" name="email">
+        <input type="email" name="email" formControlName="email">
         <label for="senha">Senha</label>
-        <input type="text" name="senha">
+        <input type="text" name="senha" formControlName="senha">
         <div class="btn-cadastro">
-          <button>Entrar</button>
+          <button type="submit" (click)="entrar()">Entrar</button>
           <span>Ainda não possui cadastro? Cadastre-se <strong>aqui</strong> </span>
         </div>
       </form>

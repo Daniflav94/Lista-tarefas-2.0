@@ -6,6 +6,7 @@ import { Tarefa } from 'src/app/models/tarefa';
 import { TarefasService } from 'src/app/services/tarefas.service';
 import { NotificationService } from 'src/app/services/notification.service';
 import { DialogExcluirComponent } from 'src/app/components/dialog-excluir/dialog-excluir.component';
+import { UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({
   selector: 'app-home',
@@ -15,6 +16,7 @@ import { DialogExcluirComponent } from 'src/app/components/dialog-excluir/dialog
 export class HomeComponent implements OnInit {
   constructor(
     private tarefasService: TarefasService,
+    private usuarioService: UsuarioService,
     public dialog: MatDialog,
     private notificacao: NotificationService
   ) {}
@@ -33,9 +35,15 @@ export class HomeComponent implements OnInit {
     criadaEm: new Date(),
     repeticao: undefined,
     data: undefined,
+    usuario:
   };
   expandir: boolean = false;
   tarefasConcluidas: Tarefa[] = []
+
+  carregarUsuario() {
+    let email = localStorage.getItem("usuario")
+    this.usuarioService.filtrarPorEmail
+  }
 
   escolherData(data: string) {
     const hoje = new Date();
@@ -125,7 +133,8 @@ export class HomeComponent implements OnInit {
           dataConclusao: undefined,
           criadaEm: new Date(),
           repeticao: undefined,
-          data: undefined
+          data: undefined,
+          usuario:
         };
       });
     } else {
