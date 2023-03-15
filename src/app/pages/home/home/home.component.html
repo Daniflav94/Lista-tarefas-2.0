@@ -7,7 +7,15 @@
           <img src="/assets/icons/botao-de-inicio (1).png" width="30px">
           <h1>Tarefas</h1>
         </div>
-        <img src="/assets/icons/pontos.png" class="pontos">
+        <button [matMenuTriggerFor]="menu"><img src="/assets/icons/pontos.png" class="pontos"></button>
+        <mat-menu #menu="matMenu">
+          <h3>Tema</h3>
+          <div class="temas">
+            <div *ngFor="let tema of temas">
+              <img [src]="tema" class="tema">
+            </div>
+          </div>
+        </mat-menu>
       </section>
       <section class="tarefas">
         <div *ngFor="let tarefa of tarefas">

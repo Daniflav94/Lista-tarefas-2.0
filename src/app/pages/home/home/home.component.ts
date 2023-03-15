@@ -42,6 +42,7 @@ export class HomeComponent implements OnInit {
   };
   expandir: boolean = false;
   tarefasConcluidas: Tarefa[] = []
+  temas: string[] = ["/assets/img/alice-donovan-rouse-pZ61ZA8QgcY-unsplash.jpg", "/assets/img/david-marcu-78A265wPiO4-unsplash.jpg", "assets/img/boxed-water-is-better-5Lw1U5BIumE-unsplash.jpg", "assets/img/frank-mckenna-eXHeq48Z-Q4-unsplash.jpg", "assets/img/henry-be-IicyiaPYGGI-unsplash.jpg", "assets/img/jay-mantri-TFyi0QOx08c-unsplash.jpg", "assets/img/jordan-whitt-qGQNmBE7mYw-unsplash.jpg", "assets/img/lukasz-szmigiel-ps2daRcXYes-unsplash.jpg"]
 
   carregarUsuario() {
     let email = localStorage.getItem("email")

@@ -17,6 +17,19 @@ app-sidenav{
   color: rgb(215, 57, 57);
 }
 
+.tema{
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  margin-right: 7px;
+  opacity: 0.9;
+}
+
+.tema:hover{
+  opacity: 1;
+  cursor: pointer;
+}
+
 
 .container{
   margin-left: 300px;
@@ -49,6 +62,12 @@ app-sidenav{
       z-index: 2;
       margin: 0 0 0 10px;
     }
+
+    button{
+      background-color: transparent;
+      border: none;
+    }
+
 
     div{
       display: flex;

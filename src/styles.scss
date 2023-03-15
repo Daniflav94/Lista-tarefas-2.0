@@ -20,6 +20,28 @@ body {
   --mdc-snackbar-supporting-text-color: var(--black);
 }
 
+.mat-mdc-menu-content, .mat-mdc-menu-panel{
+  min-width: 200px!important;
+  max-width: 350px!important;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  overflow: hidden;
+}
+
+.temas{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding-left: 7px;
+}
+
 ::-webkit-scrollbar {
   width: 6px;
   background-color: rgba(220, 220, 220, 0.714);
