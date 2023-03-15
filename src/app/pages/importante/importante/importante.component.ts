@@ -3,8 +3,10 @@ import { MatDialog } from '@angular/material/dialog';
 import { DialogExcluirComponent } from 'src/app/components/dialog-excluir/dialog-excluir.component';
 import { DialogTarefaComponent } from 'src/app/components/dialog-tarefa/dialog-tarefa.component';
 import { Tarefa } from 'src/app/models/tarefa';
+import { Usuario } from 'src/app/models/usuario';
 import { NotificationService } from 'src/app/services/notification.service';
 import { TarefasService } from 'src/app/services/tarefas.service';
+import { UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({
   selector: 'app-importante',
@@ -15,6 +17,7 @@ export class ImportanteComponent {
 
   constructor(
     private tarefasService: TarefasService,
+    private usuarioService: UsuarioService,
     public dialog: MatDialog,
     private notificacao: NotificationService
   ) {
@@ -23,8 +26,10 @@ export class ImportanteComponent {
   ngOnInit(): void {
     this.listarTarefas()
     this.listarConcluidas()
+    this.carregarUsuario()
   }
 
+  usuario!: Usuario
   tarefasImportantes: Tarefa[] = []
   tarefa: Tarefa = {
     _id: 0,
@@ -34,9 +39,19 @@ export class ImportanteComponent {
     criadaEm: new Date(),
     repeticao: undefined,
     data: undefined,
+    usuario: this.usuario
   };
   expandir: boolean = false
   tarefasConcluidas: Tarefa[] = []
+
+  carregarUsuario() {
+    let email = localStorage.getItem("email")
+    if(email){
+      this.usuarioService.filtrarPorEmail(email).subscribe(user => {
+        this.usuario = user
+      })
+    }
+  }
 
   listarTarefas() {
     const hoje = new Date();
@@ -130,6 +145,7 @@ export class ImportanteComponent {
           criadaEm: new Date(),
           repeticao: undefined,
           data: undefined,
+          usuario: this.usuario
         };
       });
     } else {

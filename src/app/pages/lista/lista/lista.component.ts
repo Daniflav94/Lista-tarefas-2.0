@@ -5,9 +5,11 @@ import { DialogExcluirComponent } from 'src/app/components/dialog-excluir/dialog
 import { DialogTarefaComponent } from 'src/app/components/dialog-tarefa/dialog-tarefa.component';
 import { Lista } from 'src/app/models/lista';
 import { Tarefa } from 'src/app/models/tarefa';
+import { Usuario } from 'src/app/models/usuario';
 import { ListaService } from 'src/app/services/lista.service';
 import { NotificationService } from 'src/app/services/notification.service';
 import { TarefasService } from 'src/app/services/tarefas.service';
+import { UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({
   selector: 'app-lista',
@@ -18,6 +20,7 @@ export class ListaComponent {
 
   constructor(
     private tarefasService: TarefasService,
+    private usuarioService: UsuarioService,
     private listaService: ListaService,
     public dialog: MatDialog,
     private notificacao: NotificationService,
@@ -28,8 +31,10 @@ export class ListaComponent {
     this.listarTarefas();
     this.listarConcluidas();
     this.inicializarLista();
+    this.carregarUsuario();
   }
 
+  usuario!: Usuario
   tarefas: Tarefa[] = [];
   tarefa: Tarefa = {
     _id: 0,
@@ -39,12 +44,23 @@ export class ListaComponent {
     criadaEm: new Date(),
     repeticao: undefined,
     data: undefined,
+    usuario: this.usuario
   };
   expandir: boolean = false;
   tarefasConcluidas: Tarefa[] = []
   lista: Lista = {
     _id: 0,
-    nome: ''
+    nome: '',
+    usuario: this.usuario
+  }
+
+  carregarUsuario() {
+    let email = localStorage.getItem("email")
+    if(email){
+      this.usuarioService.filtrarPorEmail(email).subscribe(user => {
+        this.usuario = user
+      })
+    }
   }
 
   inicializarLista() {
@@ -147,7 +163,8 @@ export class ListaComponent {
           dataConclusao: undefined,
           criadaEm: new Date(),
           repeticao: undefined,
-          data: undefined
+          data: undefined,
+          usuario: this.usuario
         };
       });
     } else {

@@ -1,0 +1,119 @@
+.container{
+  display: flex;
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #597890;
+
+}
+
+.img1{
+  position: absolute;
+  bottom: 0px;
+  left: 300px;
+  width: 600px;
+  z-index: -1;
+}
+
+.img2{
+  position: absolute;
+  bottom: 50px;
+  right: 400px;
+  width: 450px;
+  z-index: -1;
+}
+
+.img3{
+  position: absolute;
+  top: 100px;
+  right: 350px;
+  width: 400px;
+  z-index: -1;
+}
+
+.login{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  z-index: 9999999;
+  position: relative;
+
+
+  .login-container{
+    width: 300px;
+    height: auto;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    padding: 40px;
+
+
+    h1{
+      width: 100%;
+      font-size: 27px;
+      color: #597890;
+      font-weight: 500;
+      margin-bottom: 35px;
+      text-align: center;
+    }
+
+    form{
+      display: flex;
+      flex-direction: column;
+
+      label{
+        font-weight: 500;
+        color: rgb(87, 87, 87);
+        font-size: 12px;
+      }
+
+      input{
+        border: 1px solid rgb(194, 194, 194);
+        border-radius: 5px;
+        padding: 10px;
+        margin-bottom: 10px;
+      }
+
+      input:focus{
+        outline: none;
+      }
+
+      .btn-cadastro{
+        width: 100%;
+        height: 100px;
+        display: flex;
+        flex-direction: column;
+        margin-top: 20px;
+
+        button{
+          width: 100%;
+          background-color: #597890;
+          border: none;
+          border-radius: 5px;
+          color: aliceblue;
+          height: 40px;
+          margin-bottom: 20px;
+          cursor: pointer;
+        }
+
+        button:hover{
+          opacity: 0.9;
+        }
+
+        span{
+          width: 100%;
+          font-size: 13px;
+          text-align: start;
+          cursor: pointer;
+          color: #3479ae;
+        }
+      }
+    }
+  }
+
+}
+
+
+

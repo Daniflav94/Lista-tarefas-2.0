@@ -29,6 +29,7 @@ export class LoginComponent {
   entrar() {
     if(this.formLogin.valid){
       const credenciais: Credenciais = this.formLogin.value
+      localStorage.setItem("email", this.formLogin.value.email)
       this.authService.autenticar(credenciais).subscribe(resposta => {
         this.notification.mostrarMensagem("Bem vindo(a)!")
         this.Router.navigate(["/home"])

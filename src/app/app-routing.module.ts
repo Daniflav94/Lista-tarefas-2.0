@@ -31,10 +31,14 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    component: LoginComponent
+    loadChildren: () =>
+    import('./pages/login/login.module').then(m => m.LoginModule)
   },
-  { path: 'login', loadChildren: () => import('./pages/login/login.module').then(m => m.LoginModule) },
-  { path: 'cadastro', loadChildren: () => import('./pages/cadastro/cadastro.module').then(m => m.CadastroModule) }
+  {
+    path: 'cadastro',
+    loadChildren: () =>
+    import('./pages/cadastro/cadastro.module').then(m => m.CadastroModule)
+  }
 
 ];
 

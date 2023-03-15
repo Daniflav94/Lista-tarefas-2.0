@@ -4,7 +4,9 @@ import { MatDialog } from '@angular/material/dialog';
 import { DialogExcluirComponent } from 'src/app/components/dialog-excluir/dialog-excluir.component';
 import { DialogTarefaComponent } from 'src/app/components/dialog-tarefa/dialog-tarefa.component';
 import { Tarefa } from 'src/app/models/tarefa';
+import { Usuario } from 'src/app/models/usuario';
 import { TarefasService } from 'src/app/services/tarefas.service';
+import { UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({
   selector: 'app-meu-dia',
@@ -15,17 +17,19 @@ export class MeuDiaComponent {
 
   constructor(
     private tarefasService: TarefasService,
+    private usuarioService: UsuarioService,
     public dialog: MatDialog,
     private dateAdapter: DateAdapter<Date>
   ) {
   }
 
   ngOnInit(): void {
-    this.listarTarefas()
-    this.formatarData()
-
+    this.listarTarefas();
+    this.formatarData();
+    this.carregarUsuario();
   }
 
+  usuario!: Usuario
   tarefasDoDia: Tarefa[] = [];
   tarefa: Tarefa = {
     _id: 0,
@@ -35,11 +39,21 @@ export class MeuDiaComponent {
     criadaEm: new Date(),
     repeticao: undefined,
     data: undefined,
+    usuario: this.usuario
   };
   dataHoje = new Date();
   dataFormatada: any
   expandir: boolean = false;
   tarefasConcluidas: Tarefa[] = []
+
+  carregarUsuario() {
+    let email = localStorage.getItem("email")
+    if(email){
+      this.usuarioService.filtrarPorEmail(email).subscribe(user => {
+        this.usuario = user
+      })
+    }
+  }
 
   formatarData(){
     const mes = this.dataHoje.getMonth() + 1
@@ -127,6 +141,7 @@ export class MeuDiaComponent {
         criadaEm: new Date(),
         repeticao: undefined,
         data: undefined,
+        usuario: this.usuario
       };
     })
   }

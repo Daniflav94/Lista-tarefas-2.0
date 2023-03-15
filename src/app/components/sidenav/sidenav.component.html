@@ -3,11 +3,12 @@
     <div class="listagem">
       <div class="header-nav">
         <div class="usuario">
-          <img src="../../../assets/img/boxed-water-is-better-5Lw1U5BIumE-unsplash.jpg" />
+          <img class="img" src="../../../assets/img/boxed-water-is-better-5Lw1U5BIumE-unsplash.jpg" />
           <div class="dados-usuario">
-            <span class="nome-usuario">Daniele</span>
-            <span class="email-usuario">dani@gmail.com</span>
+            <span class="nome-usuario">{{usuario.nome}}</span>
+            <span class="email-usuario">{{usuario.email}}</span>
           </div>
+          <img class="icone-sair" src="../../../assets/icons/logout_FILL0_wght400_GRAD0_opsz48.png" width="25px" (click)="logout()">
         </div>
         <div class="listas">
           <a routerLink="/home">

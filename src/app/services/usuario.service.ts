@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { catchError, EMPTY } from 'rxjs';
 import { Usuario } from '../models/usuario';
 import { NotificationService } from './notification.service';
+import { JwtHelperService } from '@auth0/angular-jwt';
+import { DecodedToken } from 'src/app/models/decoded-token';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +19,7 @@ export class UsuarioService {
   ) { }
 
   filtrarPorEmail(email: string) {
-    return this.httpCliente.get<Usuario>(`${this.API}/${email}`).pipe(
+    return this.httpCliente.get<Usuario>(`${this.API}/email/${email}`).pipe(
       catchError(error => {
         this.notification.mostrarMensagem("Email não consta no banco de dados!")
         console.error(error)
@@ -45,5 +47,6 @@ export class UsuarioService {
         })
       )
     }
+
 
 }

@@ -1,1 +1,24 @@
-<p>cadastro works!</p>
+<div class="container">
+  <div class="login">
+    <div class="login-container">
+      <h1>Cadastrar</h1>
+      <form [formGroup]="formLogin">
+        <label for="nome">Nome</label>
+        <input type="text" name="nome" formControlName="nome">
+        <label for="email">Email</label>
+        <input type="email" name="email" formControlName="email">
+        <label for="senha">Senha</label>
+        <input type="password" name="senha" formControlName="senha">
+        <div class="btn-cadastro">
+          <button type="submit" (click)="cadastrar()">Cadastrar</button>
+          <a routerLink="../login"><span>Voltar</span></a>
+        </div>
+      </form>
+
+    </div>
+    <img src="../../../../assets/img/Schedule-bro.png"  class="img1">
+      <img src="../../../../assets/img/Checklist-bro.png"  class="img2">
+      <img src="../../../../assets/img/Time management-bro.png" class="img3">
+  </div>
+</div>
+

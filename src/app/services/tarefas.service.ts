@@ -3,7 +3,9 @@ import { Injectable } from '@angular/core';
 import { Tarefa } from '../models/tarefa';
 import { first, tap, EMPTY } from 'rxjs';
 import { NotificationService } from './notification.service';
-import { catchError } from 'rxjs/operators'
+import { catchError, map } from 'rxjs/operators'
+import { UsuarioService } from './usuario.service';
+import { Usuario } from '../models/usuario';
 
 @Injectable({
   providedIn: 'root',
@@ -14,13 +16,16 @@ export class TarefasService {
 
   constructor(
     private httpClient: HttpClient,
-    private notificationService: NotificationService
+    private notificationService: NotificationService,
+    private usuarioService: UsuarioService
   ) {}
 
 
   listarTarefas() {
+    let email = localStorage.getItem("email") as string
+    let listaTarefas: Tarefa[]
+
     return this.httpClient.get<Tarefa[]>(this.API).pipe( //pipe permite manipulação dos dados
-    first() //vai obter a primeira resposta do servidor e finaliza a inscrição do rxjs
     )
   }
 

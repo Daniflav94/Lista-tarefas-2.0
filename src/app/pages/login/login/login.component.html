@@ -1,20 +1,21 @@
 <div class="container">
   <div class="login">
     <div class="login-container">
-      <h1>Login</h1>
+      <h1>Bem-vindo(a)!</h1>
       <form [formGroup]="formLogin">
         <label for="email">Email</label>
         <input type="email" name="email" formControlName="email">
         <label for="senha">Senha</label>
-        <input type="text" name="senha" formControlName="senha">
+        <input type="password" name="senha" formControlName="senha">
         <div class="btn-cadastro">
           <button type="submit" (click)="entrar()">Entrar</button>
-          <span>Ainda não possui cadastro? Cadastre-se <strong>aqui</strong> </span>
+          <span>Ainda não possui cadastro? Cadastre-se <a routerLink="/cadastro"><strong>aqui</strong></a> </span>
         </div>
       </form>
+
     </div>
-  </div>
-  <div class="imagem">
-    <img src="/assets/img/3235815-scaled (1).png" width="1000px">
+    <img src="../../../../assets/img/Schedule-bro.png"  class="img1">
+      <img src="../../../../assets/img/Checklist-bro.png"  class="img2">
+      <img src="../../../../assets/img/Time management-bro.png" class="img3">
   </div>
 </div>

@@ -2,9 +2,11 @@ import { Component, Output, EventEmitter, SimpleChanges, OnChanges, OnInit } fro
 import { Router } from '@angular/router';
 import { Lista } from 'src/app/models/lista';
 import { Tarefa } from 'src/app/models/tarefa';
+import { Usuario } from 'src/app/models/usuario';
 import { ListaService } from 'src/app/services/lista.service';
 import { NotificationService } from 'src/app/services/notification.service';
 import { TarefasService } from 'src/app/services/tarefas.service';
+import { UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({
   selector: 'app-sidenav',
@@ -16,6 +18,7 @@ export class SidenavComponent implements OnInit{
   constructor(
     private tarefasService: TarefasService,
     private listaService: ListaService,
+    private usuarioService: UsuarioService,
     private notification: NotificationService,
     private router: Router
   ){
@@ -24,29 +27,40 @@ export class SidenavComponent implements OnInit{
   ngOnInit(): void {
     this.listarTarefas()
     this.listarListas()
+    this.carregarUsuario()
   }
 
+  usuario: Usuario = {
+    _id: 0,
+    nome: '',
+    email: '',
+    senha: '',
+    foto: '',
+    perfil: ''
+  }
   tarefasDoDia: Tarefa[] = [];
   tarefas: Tarefa[] = [];
   importantes: Tarefa[] = [];
   lista: Lista = {
     _id: 0,
-    nome: ''
+    nome: '',
+    usuario: this.usuario
   }
   listas: Lista[] = []
 
   listarTarefas() {
     this.tarefasService.listarTarefas().subscribe(lista => {
       this.tarefas = lista
-      lista.forEach(tarefa => {
-        if(tarefa.meuDia == true){
-          this.tarefasDoDia.push(tarefa)
-        }
-        if(tarefa.favorito == true){
-          this.importantes.push(tarefa)
-        }
-
-      })
+      if(lista != undefined){
+        lista.forEach(tarefa => {
+          if(tarefa.meuDia == true){
+            this.tarefasDoDia.push(tarefa)
+          }
+          if(tarefa.favorito == true){
+            this.importantes.push(tarefa)
+          }
+        })
+      }
     });
   }
 
@@ -57,12 +71,18 @@ export class SidenavComponent implements OnInit{
   }
 
   novaLista(){
-    if(this.lista.nome != ''){
-      this.listaService.salvar(this.lista).subscribe(resposta => {
-        this.listarListas()
-      })
-    }else{
-      this.notification.mostrarMensagem("Nome da lista não pode estar em branco!")
+    let email = localStorage.getItem("email")
+    if(email){
+      if(this.lista.nome != ''){
+        this.usuarioService.filtrarPorEmail(email).subscribe(user => {
+          this.lista.usuario = user
+          this.listaService.salvar(this.lista).subscribe(resposta => {
+            this.listarListas()
+          })
+        })
+      }else{
+        this.notification.mostrarMensagem("Nome da lista não pode estar em branco!")
+    }
     }
   }
 
@@ -70,5 +90,19 @@ export class SidenavComponent implements OnInit{
     //this.router.navigateByUrl('/lista/' + idLista)
     window.location.replace('/lista/' + idLista)
 
+  }
+
+  carregarUsuario() {
+    let email = localStorage.getItem("email")
+    if(email){
+      this.usuarioService.filtrarPorEmail(email).subscribe(user => {
+        this.usuario = user
+      })
+    }
+  }
+
+  public logout(): void {
+      localStorage.clear()
+      this.router.navigate(["/login"]);
   }
 }
