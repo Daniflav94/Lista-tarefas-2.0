@@ -1,13 +1,22 @@
 <app-sidenav>
   <ng-container>
     <div class="container">
-      <img src="/assets/img/alice-donovan-rouse-pZ61ZA8QgcY-unsplash.jpg" class="background" />
+      <img [src]="usuario.temaImportante" class="background" *ngIf="usuario.temaImportante != undefined"/>
+      <img src="/assets/img/alice-donovan-rouse-pZ61ZA8QgcY-unsplash.jpg" *ngIf="usuario.temaImportante == undefined" class="background" />
       <section class="header">
         <div>
           <svg xmlns="http://www.w3.org/2000/svg" height="30" viewBox="0 96 960 960" width="30"><path d="m323 851 157-94 157 95-42-178 138-120-182-16-71-168-71 167-182 16 138 120-42 178Zm-90 125 65-281L80 506l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Zm247-355Z"/></svg>
           <h1>Importante</h1>
         </div>
-        <img src="/assets/icons/pontos.png" class="pontos">
+        <button [matMenuTriggerFor]="menu"><img src="/assets/icons/pontos.png" class="pontos"></button>
+        <mat-menu #menu="matMenu">
+          <h3>Tema</h3>
+          <div class="temas">
+            <div *ngFor="let tema of temas" (click)="mudarTema(tema)">
+              <img [src]="tema" class="tema">
+            </div>
+          </div>
+        </mat-menu>
       </section>
       <section class="tarefas" >
         <div *ngFor="let tarefa of tarefasImportantes, index as i">

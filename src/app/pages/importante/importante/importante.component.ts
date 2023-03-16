@@ -43,12 +43,24 @@ export class ImportanteComponent {
   };
   expandir: boolean = false
   tarefasConcluidas: Tarefa[] = []
+  temas: string[] = ["/assets/img/alice-donovan-rouse-pZ61ZA8QgcY-unsplash.jpg", "/assets/img/david-marcu-78A265wPiO4-unsplash.jpg", "assets/img/boxed-water-is-better-5Lw1U5BIumE-unsplash.jpg", "assets/img/sean-oulashin-KMn4VEeEPR8-unsplash.jpg", "/assets/img/pexels-irina-iriser-1122628.jpg", "/assets/img/timothy-eberly-yuiJO6bvHi4-unsplash.jpg", "assets/img/jordan-whitt-qGQNmBE7mYw-unsplash.jpg", "assets/img/erico-marcelino-91QHQ3GGh9I-unsplash.jpg", "assets/img/darya-jum-uEtgnJFwujA-unsplash.jpg", "assets/img/aayush-gupta-ljhCEaHYWJ8-unsplash.jpg", "assets/img/ferhat-deniz-fors-cWdefpoj3PU-unsplash.jpg", "assets/img/ricardo-resende-3PhGJ9jkaQM-unsplash.jpg", "assets/img/alice-yamamura-s1HNMntIv5w-unsplash.jpg", "assets/img/guilherme-stecanella-SaVlzqe9068-unsplash.jpg", "assets/img/marek-piwnicki-_3qLnlJlyZw-unsplash.jpg", "assets/img/daiga-ellaby-ClWvcrkBhMY-unsplash.jpg"]
 
   carregarUsuario() {
     let email = localStorage.getItem("email")
     if(email){
       this.usuarioService.filtrarPorEmail(email).subscribe(user => {
         this.usuario = user
+      })
+    }
+  }
+
+  mudarTema(tema: string) {
+    let email = localStorage.getItem("email")
+    if(email){
+      this.usuarioService.filtrarPorEmail(email).subscribe(user => {
+        this.usuario = user
+        this.usuario.temaImportante = tema
+        this.usuarioService.editarUsuario(this.usuario).subscribe()
       })
     }
   }

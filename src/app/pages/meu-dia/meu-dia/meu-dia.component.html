@@ -1,7 +1,8 @@
 <app-sidenav>
   <ng-container>
     <div class="container">
-      <img src="/assets/img/alice-donovan-rouse-pZ61ZA8QgcY-unsplash.jpg" class="background" />
+     <img [src]="usuario.temaMeuDia" class="background" *ngIf="usuario.temaMeuDia!= undefined"/>
+      <img src="/assets/img/alice-donovan-rouse-pZ61ZA8QgcY-unsplash.jpg" *ngIf="usuario.temaMeuDia == undefined" class="background" />
       <section class="header">
         <div>
           <svg xmlns="http://www.w3.org/2000/svg" height="30" viewBox="0 96 960 960" width="30">
@@ -10,7 +11,15 @@
           </svg>
           <h1>Meu dia</h1>
         </div>
-        <img src="/assets/icons/pontos.png" class="pontos">
+        <button [matMenuTriggerFor]="menu"><img src="/assets/icons/pontos.png" class="pontos"></button>
+        <mat-menu #menu="matMenu">
+          <h3>Tema</h3>
+          <div class="temas">
+            <div *ngFor="let tema of temas" (click)="mudarTema(tema)">
+              <img [src]="tema" class="tema">
+            </div>
+          </div>
+        </mat-menu>
       </section>
       <p class="dataHoje">{{dataFormatada}}</p>
       <section class="tarefas">

@@ -34,48 +34,55 @@ app-sidenav{
       z-index: 1;
     }
 
-  .header{
-    display: flex;
-    margin: 40px 160px 0 160px;
-    z-index: 2;
-    position: relative;
-    width: 58%;
-    justify-content: space-between;
-
-    h1{
-      font-size: 35px;
-      color: white;
-      font-weight: 500;
-      z-index: 2;
-      margin: 0 0 0 10px;
-    }
-
-    div{
+    .header{
       display: flex;
-      align-items: center;
+      margin: 45px 160px 10px 160px;
+      z-index: 2;
+      position: relative;
+      width: 58%;
+      justify-content: space-between;
 
-      svg{
-        fill: white;
+      h1{
+        font-size: 35px;
+        color: white;
+        font-weight: 500;
+        z-index: 2;
+        margin: 0 0 0 10px;
       }
-    }
 
-    .pontos{
-      cursor: pointer;
-      border-radius: 50%;
-      padding: 7px;
-      width: 25px;
-    }
+      button{
+        background-color: transparent;
+        border: none;
+      }
 
-    .pontos:hover{
-      background-color: #91919120;
-    }
 
-  }
+      div{
+        display: flex;
+        align-items: center;
+
+        svg{
+          fill: white;
+        }
+      }
+
+      .pontos{
+        cursor: pointer;
+        border-radius: 50%;
+        padding: 7px;
+        width: 25px;
+      }
+
+      .pontos:hover{
+        background-color: #91919122;
+      }
+
+    }
 
   .dataHoje{
     z-index: 2;
     color: white;
     margin: 10px 160px 30px 160px;
+    font-size: 17px;
   }
 
   .tarefas, .tarefas-concluidas{
@@ -209,43 +216,6 @@ app-sidenav{
     .tarefa:hover{
       opacity: 1;
     }
-  }
-
-  .btn-concluidas{
-    z-index: 2;
-    width: 120px;
-    margin-left: 160px;
-    margin-bottom: 10px;
-    padding: 4px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    background-color: rgba(231, 228, 228, 0.704);
-    border: none;
-    border-radius: 5px;
-    font-size: 13px;
-  }
-
-  .btn-concluidas:hover{
-    background-color: white;
-    cursor: pointer;
-  }
-
-  .apagar{
-    z-index: 2;
-    border: none;
-    background-color: transparent;
-    width: 120px;
-    margin-left: 160px;
-    margin-bottom: 10px;
-    padding: 0;
-    text-align: start;
-    color: #646464;
-    cursor: pointer;
-  }
-
-  .apagar:hover{
-    color: #333333;
   }
 
   .tarefas{
