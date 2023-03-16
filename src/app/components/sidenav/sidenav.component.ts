@@ -36,7 +36,10 @@ export class SidenavComponent implements OnInit{
     email: '',
     senha: '',
     foto: '',
-    perfil: ''
+    perfil: '',
+    temaHome: "",
+    temaImportante: "",
+    temaMeuDia: ""
   }
   tarefasDoDia: Tarefa[] = [];
   tarefas: Tarefa[] = [];

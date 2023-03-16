@@ -39,7 +39,17 @@ export class UsuarioService {
     }
 
     editarUsuario(usuario: Partial<Usuario>) {
-      return this.httpCliente.put<Usuario>(`${this.API}/${usuario._id}`, usuario).pipe(
+      const user = {
+        foto: usuario.foto,
+        temaHome: usuario.temaHome,
+        temaImportante: usuario.temaImportante,
+        temaMeuDia: usuario.temaMeuDia,
+        nome: usuario.nome,
+        email: usuario.email,
+        perfil: usuario.perfil,
+        senha: usuario.senha
+      }
+      return this.httpCliente.put<Usuario>(`${this.API}/${usuario._id}`, user).pipe(
         catchError(error => {
           this.notification.mostrarMensagem("Erro ao editar usuário!")
           console.error(error)

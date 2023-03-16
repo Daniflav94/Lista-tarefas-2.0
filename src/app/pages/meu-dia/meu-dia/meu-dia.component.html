@@ -53,8 +53,10 @@
         <mat-icon *ngIf="!expandir">chevron_right</mat-icon>
         <mat-icon *ngIf="expandir">expand_more</mat-icon>
         Concluída ({{tarefasConcluidas.length}})
+        <button class="apagar" *ngIf="expandir" (click)="openDialogExcluir('meuDia')">
+          <img src="/assets/icons/lixeira-de-reciclagem (1).png" alt="">
+        </button>
       </button>
-      <button class="apagar" *ngIf="expandir" (click)="openDialogExcluir('meuDia')">Apagar todas</button>
       <section class="tarefas-concluidas" *ngIf="expandir">
         <div *ngFor="let tarefa of tarefasConcluidas">
           <div class="tarefa" [ngClass]="{'concluido': tarefa.concluida}" *ngIf="tarefa.concluida">

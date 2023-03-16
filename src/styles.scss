@@ -42,6 +42,55 @@ body {
   padding-left: 7px;
 }
 
+
+.tema{
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  margin-right: 7px;
+  opacity: 0.9;
+}
+
+.tema:hover{
+  opacity: 1;
+  cursor: pointer;
+}
+
+.btn-concluidas{
+  z-index: 2;
+  width: fit-content;
+  margin-left: 160px;
+  margin-bottom: 20px;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: rgba(231, 228, 228, 0.704);
+  border: none;
+  border-radius: 5px;
+  font-size: 13px;
+}
+
+.btn-concluidas:hover{
+  background-color: white;
+  cursor: pointer;
+}
+
+.apagar{
+  background-color: transparent;
+  border: none;
+  margin-left: 5px;
+  cursor: pointer;
+
+  img{
+    width: 19px;
+  }
+}
+
+.apagar:hover{
+  color: #333333;
+}
+
 ::-webkit-scrollbar {
   width: 6px;
   background-color: rgba(220, 220, 220, 0.714);

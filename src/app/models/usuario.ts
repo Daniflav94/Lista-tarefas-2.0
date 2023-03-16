@@ -5,5 +5,8 @@ export interface Usuario {
   senha: string;
   foto?: string;
   perfil: string;
+  temaHome: string;
+  temaMeuDia: string;
+  temaImportante: string;
 }
 

@@ -17,19 +17,6 @@ app-sidenav{
   color: rgb(215, 57, 57);
 }
 
-.tema{
-  width: 70px;
-  height: 70px;
-  object-fit: cover;
-  margin-right: 7px;
-  opacity: 0.9;
-}
-
-.tema:hover{
-  opacity: 1;
-  cursor: pointer;
-}
-
 
 .container{
   margin-left: 300px;
@@ -209,43 +196,6 @@ app-sidenav{
     .tarefa:hover{
       opacity: 1;
     }
-  }
-
-  .btn-concluidas{
-    z-index: 2;
-    width: 120px;
-    margin-left: 160px;
-    margin-bottom: 20px;
-    padding: 4px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    background-color: rgba(231, 228, 228, 0.704);
-    border: none;
-    border-radius: 5px;
-    font-size: 13px;
-  }
-
-  .btn-concluidas:hover{
-    background-color: white;
-    cursor: pointer;
-  }
-
-  .apagar{
-    z-index: 2;
-    border: none;
-    background-color: transparent;
-    width: 120px;
-    margin-left: 160px;
-    margin-bottom: 10px;
-    padding: 0;
-    text-align: start;
-    color: #646464;
-    cursor: pointer;
-  }
-
-  .apagar:hover{
-    color: #333333;
   }
 
   .tarefas{

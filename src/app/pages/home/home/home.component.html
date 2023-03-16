@@ -1,7 +1,8 @@
 <app-sidenav>
   <ng-container>
     <div class="container">
-      <img src="/assets/img/alice-donovan-rouse-pZ61ZA8QgcY-unsplash.jpg" class="background" />
+      <img [src]="usuario.temaHome" class="background" *ngIf="usuario.temaHome != undefined"/>
+      <img src="/assets/img/alice-donovan-rouse-pZ61ZA8QgcY-unsplash.jpg" *ngIf="usuario.temaHome == undefined" class="background" />
       <section class="header">
         <div>
           <img src="/assets/icons/botao-de-inicio (1).png" width="30px">
@@ -11,7 +12,7 @@
         <mat-menu #menu="matMenu">
           <h3>Tema</h3>
           <div class="temas">
-            <div *ngFor="let tema of temas">
+            <div *ngFor="let tema of temas" (click)="mudarTema(tema)">
               <img [src]="tema" class="tema">
             </div>
           </div>
@@ -57,8 +58,11 @@
         <mat-icon *ngIf="!expandir">chevron_right</mat-icon>
         <mat-icon *ngIf="expandir">expand_more</mat-icon>
         Concluída ({{tarefasConcluidas.length}})
+        <button class="apagar" *ngIf="expandir" (click)="openDialogExcluir('home')">
+          <img src="/assets/icons/lixeira-de-reciclagem (1).png" alt="">
+        </button>
       </button>
-      <button class="apagar" *ngIf="expandir" (click)="openDialogExcluir('home')">Apagar todas</button>
+
       <section class="tarefas-concluidas" *ngIf="expandir">
         <div *ngFor="let tarefa of tarefasConcluidas">
           <div class="tarefa" [ngClass]="{'concluido': tarefa.concluida}" *ngIf="tarefa.concluida">

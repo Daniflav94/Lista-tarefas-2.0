@@ -53,6 +53,17 @@ export class HomeComponent implements OnInit {
     }
   }
 
+  mudarTema(tema: string) {
+    let email = localStorage.getItem("email")
+    if(email){
+      this.usuarioService.filtrarPorEmail(email).subscribe(user => {
+        this.usuario = user
+        this.usuario.temaHome = tema
+        this.usuarioService.editarUsuario(this.usuario).subscribe()
+      })
+    }
+  }
+
   escolherData(data: string) {
     const hoje = new Date();
     const amanha = new Date(hoje.getTime());
