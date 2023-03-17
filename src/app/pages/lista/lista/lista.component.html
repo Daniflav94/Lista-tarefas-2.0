@@ -1,12 +1,21 @@
 <app-sidenav>
   <ng-container>
     <div class="container">
-      <img src="/assets/img/alice-donovan-rouse-pZ61ZA8QgcY-unsplash.jpg" class="background" />
+      <img [src]="lista.tema" class="background" *ngIf="lista.tema != undefined"/>
+      <img src="/assets/img/alice-donovan-rouse-pZ61ZA8QgcY-unsplash.jpg" *ngIf="lista.tema == undefined" class="background" />
       <section class="header">
         <div>
           <h1>{{lista.nome}}</h1>
         </div>
-        <img src="/assets/icons/pontos.png" class="pontos">
+        <button [matMenuTriggerFor]="menu"><img src="/assets/icons/pontos.png" class="pontos"></button>
+        <mat-menu #menu="matMenu">
+          <h3>Tema</h3>
+          <div class="temas">
+            <div *ngFor="let tema of temas" (click)="mudarTema(tema)">
+              <img [src]="tema" class="tema">
+            </div>
+          </div>
+        </mat-menu>
       </section>
       <section class="tarefas">
         <div *ngFor="let tarefa of tarefas">

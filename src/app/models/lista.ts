@@ -4,4 +4,5 @@ export interface Lista {
   _id: number;
   nome: string;
   usuario: Usuario;
+  tema: string;
 }

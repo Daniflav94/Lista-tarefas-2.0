@@ -6,6 +6,7 @@ import { Usuario } from 'src/app/models/usuario';
 import { ListaService } from 'src/app/services/lista.service';
 import { NotificationService } from 'src/app/services/notification.service';
 import { TarefasService } from 'src/app/services/tarefas.service';
+import { UploadService } from 'src/app/services/upload.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({
@@ -20,6 +21,7 @@ export class SidenavComponent implements OnInit{
     private listaService: ListaService,
     private usuarioService: UsuarioService,
     private notification: NotificationService,
+    private uploadService: UploadService,
     private router: Router
   ){
   }
@@ -47,9 +49,12 @@ export class SidenavComponent implements OnInit{
   lista: Lista = {
     _id: 0,
     nome: '',
-    usuario: this.usuario
+    usuario: this.usuario,
+    tema: ''
   }
   listas: Lista[] = []
+  isLoading: boolean = false
+  foto: string = ''
 
   listarTarefas() {
     this.tarefasService.listarTarefas().subscribe(lista => {
@@ -81,6 +86,12 @@ export class SidenavComponent implements OnInit{
           this.lista.usuario = user
           this.listaService.salvar(this.lista).subscribe(resposta => {
             this.listarListas()
+            this.lista = {
+              _id: 0,
+              nome: '',
+              usuario: this.usuario,
+              tema: ''
+            }
           })
         })
       }else{
@@ -100,6 +111,28 @@ export class SidenavComponent implements OnInit{
     if(email){
       this.usuarioService.filtrarPorEmail(email).subscribe(user => {
         this.usuario = user
+      })
+    }
+  }
+
+ uploadFoto(event: any) {
+    this.isLoading = true
+    const file: File = event.target.files[0]
+    this.uploadService.uploadFoto(file).subscribe(resposta => {
+      resposta.ref.getDownloadURL().then((foto: string) => {
+        this.foto = foto
+        this.isLoading = false
+      })
+    })
+  }
+
+  inserirFoto() {
+    let email = localStorage.getItem("email")
+    if(email){
+      this.usuarioService.filtrarPorEmail(email).subscribe(user => {
+        this.usuario = user
+        this.usuario.foto = this.foto
+        this.usuarioService.editarUsuario(this.usuario).subscribe()
       })
     }
   }

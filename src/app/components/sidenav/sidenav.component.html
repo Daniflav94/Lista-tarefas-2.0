@@ -3,12 +3,22 @@
     <div class="listagem">
       <div class="header-nav">
         <div class="usuario">
-          <img class="img" src="../../../assets/img/boxed-water-is-better-5Lw1U5BIumE-unsplash.jpg" />
+          <div class="imagem">
+            <img [src]="usuario.foto || 'assets/img/semfoto.png'" class="foto" >
+            <label for="conteiner-label" class="editar">
+                <label for="uploadImage"><img src="/assets/icons/editar-imagem.png" id="uploadPreview" style="width: 30px; height: 30px; cursor: pointer; margin-bottom: 10px;">
+                Editar</label><br>
+            </label>
+
+            <input id="uploadImage" type="file" name="foto"(change)="uploadFoto($event)">
+            <mat-spinner class="spinner"  [diameter]="30" *ngIf="isLoading"></mat-spinner>
+
+        </div>
           <div class="dados-usuario">
             <span class="nome-usuario">{{usuario.nome}}</span>
             <span class="email-usuario">{{usuario.email}}</span>
           </div>
-          <img class="icone-sair" src="../../../assets/icons/logout_FILL0_wght400_GRAD0_opsz48.png" width="25px" (click)="logout()">
+          <img class="icone-sair" src="/assets/icons/logout_FILL0_wght400_GRAD0_opsz48.png" width="25px" (click)="logout()">
         </div>
         <div class="listas">
           <a routerLink="/home">

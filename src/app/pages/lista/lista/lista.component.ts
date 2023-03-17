@@ -51,8 +51,10 @@ export class ListaComponent {
   lista: Lista = {
     _id: 0,
     nome: '',
-    usuario: this.usuario
+    usuario: this.usuario,
+    tema: ''
   }
+  temas: string[] = ["/assets/img/alice-donovan-rouse-pZ61ZA8QgcY-unsplash.jpg", "/assets/img/david-marcu-78A265wPiO4-unsplash.jpg", "assets/img/boxed-water-is-better-5Lw1U5BIumE-unsplash.jpg", "assets/img/sean-oulashin-KMn4VEeEPR8-unsplash.jpg", "/assets/img/pexels-irina-iriser-1122628.jpg", "/assets/img/timothy-eberly-yuiJO6bvHi4-unsplash.jpg", "assets/img/jordan-whitt-qGQNmBE7mYw-unsplash.jpg", "assets/img/erico-marcelino-91QHQ3GGh9I-unsplash.jpg", "assets/img/darya-jum-uEtgnJFwujA-unsplash.jpg", "assets/img/aayush-gupta-ljhCEaHYWJ8-unsplash.jpg", "assets/img/ferhat-deniz-fors-cWdefpoj3PU-unsplash.jpg", "assets/img/ricardo-resende-3PhGJ9jkaQM-unsplash.jpg", "assets/img/alice-yamamura-s1HNMntIv5w-unsplash.jpg", "assets/img/guilherme-stecanella-SaVlzqe9068-unsplash.jpg", "assets/img/marek-piwnicki-_3qLnlJlyZw-unsplash.jpg", "assets/img/daiga-ellaby-ClWvcrkBhMY-unsplash.jpg"]
 
   carregarUsuario() {
     let email = localStorage.getItem("email")
@@ -61,6 +63,11 @@ export class ListaComponent {
         this.usuario = user
       })
     }
+  }
+
+  mudarTema(tema: string) {
+    this.lista.tema = tema
+    this.listaService.editar(this.lista).subscribe()
   }
 
   inicializarLista() {
@@ -149,26 +156,31 @@ export class ListaComponent {
   }
 
   criarTarefa() {
-    this.inicializarLista()
-    if (this.tarefa.nome != '') {
-      this.tarefa.lista = this.lista
-      console.log(this.lista)
-      this.tarefasService.salvarTarefa(this.tarefa).subscribe((resposta) => {
-        this.listarTarefas();
-        this.tarefa = {
-          _id: 0,
-          nome: '',
-          favorito: false,
-          concluida: false,
-          dataConclusao: undefined,
-          criadaEm: new Date(),
-          repeticao: undefined,
-          data: undefined,
-          usuario: this.usuario
-        };
-      });
-    } else {
-      this.notificacao.mostrarMensagem('Preencha o campo do nome da tarefa!');
+    let email = localStorage.getItem("email")
+    if(email){
+      this.usuarioService.filtrarPorEmail(email).subscribe(user => {
+        if (this.tarefa.nome != '') {
+          this.tarefa.lista = this.lista
+          this.tarefa.usuario = user
+          this.tarefasService.salvarTarefa(this.tarefa).subscribe((resposta) => {
+            this.tarefas = []
+            this.listarTarefas()
+            this.tarefa = {
+              _id: 0,
+              nome: '',
+              favorito: false,
+              concluida: false,
+              dataConclusao: undefined,
+              criadaEm: new Date(),
+              repeticao: undefined,
+              data: undefined,
+              usuario: this.usuario
+            };
+          });
+        } else {
+          this.notificacao.mostrarMensagem('Preencha o campo do nome da tarefa!');
+        }
+      })
     }
   }
 
