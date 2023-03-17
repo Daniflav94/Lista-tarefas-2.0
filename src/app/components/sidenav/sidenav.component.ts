@@ -122,6 +122,7 @@ export class SidenavComponent implements OnInit{
       resposta.ref.getDownloadURL().then((foto: string) => {
         this.foto = foto
         this.isLoading = false
+        this.inserirFoto()
       })
     })
   }

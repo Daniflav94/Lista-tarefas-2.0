@@ -4,21 +4,22 @@
       <div class="header-nav">
         <div class="usuario">
           <div class="imagem">
-            <img [src]="usuario.foto || 'assets/img/semfoto.png'" class="foto" >
+            <img [src]="usuario.foto || 'assets/img/semfoto.png'" class="foto" />
             <label for="conteiner-label" class="editar">
-                <label for="uploadImage"><img src="/assets/icons/editar-imagem.png" id="uploadPreview" style="width: 30px; height: 30px; cursor: pointer; margin-bottom: 10px;">
-                Editar</label><br>
+              <label for="uploadImage">
+                <img src="../../../assets/icons/editar-imagem (2).png" alt="">
+              </label>
             </label>
 
-            <input id="uploadImage" type="file" name="foto"(change)="uploadFoto($event)">
-            <mat-spinner class="spinner"  [diameter]="30" *ngIf="isLoading"></mat-spinner>
-
-        </div>
-          <div class="dados-usuario">
-            <span class="nome-usuario">{{usuario.nome}}</span>
-            <span class="email-usuario">{{usuario.email}}</span>
+            <input id="uploadImage" type="file" name="foto" (change)="uploadFoto($event)" />
+            <mat-spinner class="spinner" [diameter]="30" *ngIf="isLoading"></mat-spinner>
           </div>
-          <img class="icone-sair" src="/assets/icons/logout_FILL0_wght400_GRAD0_opsz48.png" width="25px" (click)="logout()">
+          <div class="dados-usuario">
+            <span class="nome-usuario">{{ usuario.nome }}</span>
+            <span class="email-usuario">{{ usuario.email }}</span>
+          </div>
+          <img class="icone-sair" src="/assets/icons/logout_FILL0_wght400_GRAD0_opsz48.png" width="25px"
+            (click)="logout()" />
         </div>
         <div class="listas">
           <a routerLink="/home">
@@ -33,7 +34,7 @@
             <div class="item" routerLinkActive="active">
               <div>
                 <img src="/assets/icons/brilho-do-sol.png" width="18px" class="icone" />
-                  Meu Dia
+                Meu Dia
               </div>
             </div>
           </a>
@@ -53,15 +54,17 @@
           <a [routerLink]="['/lista', lista._id]" (click)="atualizar(lista._id)">
             <div class="item" routerLinkActive="active">
               <img src="/assets/icons/cardapio.png" width="15px" class="icone" />
-              <span>{{lista.nome}}</span>
+              <span>{{ lista.nome }}</span>
             </div>
           </a>
         </div>
       </div>
       <div class="nova-lista">
         <form>
-          <button type="submit" (click)="novaLista()"><img src="/assets/icons/mais.png" width="22px" class="icone" /></button>
-          <input name="nome" placeholder="Nova Lista" [(ngModel)]="lista.nome">
+          <button type="submit" (click)="novaLista()">
+            <img src="/assets/icons/mais.png" width="22px" class="icone" />
+          </button>
+          <input name="nome" placeholder="Nova Lista" [(ngModel)]="lista.nome" />
         </form>
       </div>
     </div>
