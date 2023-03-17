@@ -21,3 +21,9 @@ As tarefas criadas possibilitam adicionar uma data de conclusão, podendo escolh
 
 ## Gif e imagens
 
+![Captura de tela 2023-03-17 142735](https://user-images.githubusercontent.com/99519903/225978058-89686e01-90cf-4468-9915-b420c6c704e9.png)
+![Captura de tela 2023-03-17 142143](https://user-images.githubusercontent.com/99519903/225978102-c4dc5253-a809-4c60-bfa5-83779b728661.png)
+![Captura de tela 2023-03-17 142209](https://user-images.githubusercontent.com/99519903/225978120-0903991a-c866-4bac-981c-62dacdb24d51.png)
+![Sem título](https://user-images.githubusercontent.com/99519903/225978206-d113ede8-b513-46cc-bc6a-beccad7d8760.png)
+![Captura de tela 2023-03-17 142414](https://user-images.githubusercontent.com/99519903/225978241-17d7e7b2-4796-43dc-ae91-25d82e76b802.png)
+![Sem título2](https://user-images.githubusercontent.com/99519903/225978260-1f8794c0-2054-4227-94fa-871635744ff0.png)
