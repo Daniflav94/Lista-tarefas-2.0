@@ -1,27 +1,20 @@
-# ListaTarefas
+# Lista de Tarefas
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.5.
+Repositório BACK END: https://github.com/Daniflav94/Lista-tarefas-2.0-BACKEND
 
-## Development server
+## Objetivo
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Aplicação web de lista de tarefas completa que possui autenticação, listas principais já prontas e opção de criar novas listas, com possibilidade de personalizar a imagem de fundo de cada uma. As tarefas possuem opção de inserir data e repetição diária, semanal ou mensal, também é possível editar as informações inseridas, adicionar anotações e excluir uma tarefa.
 
-## Code scaffolding
+## Descrição
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Para que cada usuário pudesse ter acesso a somente suas tarefas e listas criadas foi realizada autenticação utilizando o Spring Security. Os dados do usuário como nome e email são mostrados na sidenav e é possível adicionar uma foto através do serviço Storage do Firebase. A aplicação já possui listas prontas como a Tarefas que exibe todas as tarefas criadas (sem lista), lista Meu Dia que exibe somente as tarefas com data para hoje e lista Importante que exibe as tarefas que foram favoritadas. Também é possível criar novas listas com suas próprias tarefas. 
+As tarefas criadas possibilitam adicionar uma data de conclusão, podendo escolher entre Hoje, Amanhã ou abrir o calendário e escolher uma data. Também é possível adicionar repetições, no qual foi criada uma lógica no Java utilizando Cron Expressions que agenda para listar as tarefas em um momento do dia, verifica se há repetição e duplica a tarefa na data estabelecida. O usuário pode editar as tarefas através de uma caixa de diálogo e também adicionar anotações ou excluir uma tarefa. Há a opção de marcar uma tarefa como concluída e essas tarefas são renderizadas abaixo mas escondidas, clicando no botão Concluídas elas serão exibidas e podem ser deletadas.
 
-## Build
+## Tecnologias
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- Angular;
+- Java;
+- Spring;
+- MySQL
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
