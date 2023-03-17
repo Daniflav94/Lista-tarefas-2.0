@@ -201,6 +201,7 @@ export class ListaComponent {
       let index = this.tarefasConcluidas.indexOf(tarefa)
       this.tarefasConcluidas.splice(index, 1)
       this.tarefasService.editarTarefa(tarefa).subscribe(resposta => {
+        this.tarefas = []
         this.listarTarefas();
       });
     } else {

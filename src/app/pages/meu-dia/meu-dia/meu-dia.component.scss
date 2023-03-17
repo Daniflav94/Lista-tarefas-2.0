@@ -116,6 +116,7 @@ app-sidenav{
       .nome-data{
         display: flex;
         flex-direction: column;
+        justify-content: center;
 
         .data {
           color: #707070;
@@ -223,7 +224,7 @@ app-sidenav{
   }
 
   .tarefas-concluidas{
-    max-height: 280px;
+    max-height: 260px;
   }
 
   .nova-tarefa{

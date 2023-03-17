@@ -35,7 +35,6 @@ export class ListaService {
     return this.httpClient.get<Lista>(`${this.API}/${id}`).pipe(
       catchError((error) => {
         console.error(error);
-        this.notification.mostrarMensagem('Erro ao buscar por lista');
         return EMPTY;
       })
     );

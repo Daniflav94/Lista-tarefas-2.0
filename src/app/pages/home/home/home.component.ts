@@ -195,7 +195,8 @@ export class HomeComponent implements OnInit {
       let index = this.tarefasConcluidas.indexOf(tarefa)
       this.tarefasConcluidas.splice(index, 1)
       this.tarefasService.editarTarefa(tarefa).subscribe(resposta => {
-        this.tarefas.push(tarefa)
+        this.tarefas = []
+        this.listarTarefas();
       });
     } else {
       tarefa.concluida = true;

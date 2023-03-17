@@ -101,8 +101,10 @@ export class SidenavComponent implements OnInit{
   }
 
   atualizar(idLista: number){
-    //this.router.navigateByUrl('/lista/' + idLista)
-    window.location.replace('/lista/' + idLista)
+    //window.location.replace('/lista/' + idLista)
+    this.router.navigateByUrl('home', { skipLocationChange: true }).then(() => {
+      this.router.navigate(['/lista/' + idLista]);
+  });
 
   }
 
@@ -138,8 +140,14 @@ export class SidenavComponent implements OnInit{
     }
   }
 
-  public logout(): void {
+  logout() {
       localStorage.clear()
       this.router.navigate(["/login"]);
+  }
+
+  deletarLista(lista: Lista) {
+    this.listaService.deletar(lista).subscribe(resposta => {
+      this.router.navigate(["/home"]);
+    })
   }
 }

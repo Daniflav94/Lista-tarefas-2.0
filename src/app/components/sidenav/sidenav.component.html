@@ -53,9 +53,13 @@
         <div class="lista-usuario" *ngFor="let lista of listas">
           <a [routerLink]="['/lista', lista._id]" (click)="atualizar(lista._id)">
             <div class="item" routerLinkActive="active">
-              <img src="/assets/icons/cardapio.png" width="15px" class="icone" />
-              <span>{{ lista.nome }}</span>
+              <div>
+                <img src="/assets/icons/cardapio.png" width="15px" class="icone" />
+                <span>{{ lista.nome }}</span>
+              </div>
+              <img src="../../../assets/icons/lixeira-de-reciclagem (1).png" width="16px" (click)="deletarLista(lista)">
             </div>
+
           </a>
         </div>
       </div>
