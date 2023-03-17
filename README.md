@@ -20,6 +20,7 @@ As tarefas criadas possibilitam adicionar uma data de conclusão, podendo escolh
 - Firebase.
 
 ## Gif e imagens
+![Lista-tarefas demonstração (1)](https://user-images.githubusercontent.com/99519903/225986773-736a8b32-c215-4204-ac8e-baaac1cf39a0.gif)
 
 ![Captura de tela 2023-03-17 142735](https://user-images.githubusercontent.com/99519903/225978058-89686e01-90cf-4468-9915-b420c6c704e9.png)
 ![Captura de tela 2023-03-17 142143](https://user-images.githubusercontent.com/99519903/225978102-c4dc5253-a809-4c60-bfa5-83779b728661.png)
