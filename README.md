@@ -16,5 +16,8 @@ As tarefas criadas possibilitam adicionar uma data de conclusão, podendo escolh
 - Angular;
 - Java;
 - Spring;
-- MySQL
+- MySQL;
+- Firebase.
+
+## Gif e imagens
 
